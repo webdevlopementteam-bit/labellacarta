@@ -1,5 +1,5 @@
 {
-  "name": "jaincoweld",
+  "name": "labellacarta",
   "version": "0.1.0",
   "private": true,
   "scripts": {
@@ -10,13 +10,12 @@
     "format": "biome format --write"
   },
   "dependencies": {
-    "framer-motion": "^14.6.0",
-    "lucide-react": "^1.61.0",
+    "framer-motion": "^14.7.1",
+    "lucide-react": "^1.62.0",
     "next": "16.4.3",
     "react": "19.3.0",
     "react-dom": "19.3.0",
-    "swiper": "^14.3.0",
-    "zod": "^4.6.7"
+    "swiper": "^14.3.0"
   },
   "devDependencies": {
     "@biomejs/biome": "2.4.2",

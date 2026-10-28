@@ -1,1172 +1,759 @@
-export const weldingHolders = [
-  // From image_54031b.jpg
-  {
-    image: "/products/Electrical-Welding-Accessories/welding-holder/j07.png",
-    name: "J07",
-    type: "B (Semi-Insulated)",
-    currentRating: "800 AMPS",
-    material: "Steel Body with Metal Jaws & Copper Strips",
-    electrodeSize: "Upto 6.3mm",
-    insulation: "DMC",
-  },
-  {
-    image: "/products/Electrical-Welding-Accessories/welding-holder/j08.png",
-    name: "J08",
-    type: "B (Semi-Insulated)",
-    currentRating: "1000 AMPS",
-    material: "Steel Body with Metal Jaws & Copper Strips",
-    electrodeSize: "Upto 6.3mm",
-    insulation: "Nylon Fiber Glass (Unbreakable)",
-  },
-  {
-    image: "/products/Electrical-Welding-Accessories/welding-holder/j05.png",
-    name: "J05",
-    type: "B (Semi-Insulated)",
-    currentRating: "600-700 AMPS",
-    material: "Steel Body with Metal Jaws & 4 Copper Strips",
-    electrodeSize: "Upto 6.3mm",
-    insulation: "DMC",
-  },
-  {
-    image: "/products/Electrical-Welding-Accessories/welding-holder/j1500.png",
-    name: "J1500",
-    type: "A (Fully-Insulated)",
-    currentRating: "600-1000 AMPS",
-    material: "Steel Body with Metal Jaws & Copper Strips",
-    electrodeSize: "Upto 6.3mm",
-    insulation: "Nylon Fiber Glass (Unbreakable)",
-  },
-
-  // From image_540359.jpg
-  {
-    image: "/products/Electrical-Welding-Accessories/welding-holder/j02.png",
-    name: "J02",
-    type: "B (Semi-Insulated)",
-    currentRating: "400 AMPS",
-    material: "Steel Body with Metal Jaws",
-    electrodeSize: "Upto 4mm",
-    insulation: "DMC",
-  },
-  {
-    image: "/products/Electrical-Welding-Accessories/welding-holder/j04.png",
-    name: "J04",
-    type: "B (Semi-Insulated)",
-    currentRating: "400-600 AMPS",
-    material: "Steel Body with Metal Jaws & 4 Copper Strips",
-    electrodeSize: "Upto 4mm",
-    insulation: "DMC",
-  },
-  {
-    image: "/products/Electrical-Welding-Accessories/welding-holder/j15.png",
-    name: "J15",
-    type: "A (Fully-Insulated)",
-    currentRating: "600-1000 AMPS",
-    material: "Steel Body with Metal Jaws",
-    electrodeSize: "Upto 6.3mm",
-    insulation: "DMC",
-  },
-  {
-    image: "/products/Electrical-Welding-Accessories/welding-holder/j16.png",
-    name: "J16",
-    type: "A (Fully-Insulated)",
-    currentRating: "600 AMPS",
-    material: "Steel Body with Gun Metal Jaws",
-    electrodeSize: "Upto 6.3mm",
-    insulation: "DMC (Heat Proof)",
-  },
-
-  // From image_54037d.jpg
-  {
-    image: "/products/Electrical-Welding-Accessories/welding-holder/j500.png",
-    name: "J500",
-    type: "A (Fully-Insulated Mini)",
-    currentRating: "400-600 AMPS",
-    material: "Forged Brass",
-    electrodeSize: "Upto 4mm",
-    insulation: "Nylon Fiber Glass",
-  },
-  {
-    image: "/products/Electrical-Welding-Accessories/welding-holder/j501.png",
-    name: "J501",
-    type: "A (Fully-Insulated Mini)",
-    currentRating: "200-400 AMPS",
-    material: "Steel Body with Steel Jaws",
-    electrodeSize: "Upto 4mm",
-    insulation: "DMC",
-  },
-  {
-    image:
-      "/products/Electrical-Welding-Accessories/welding-holder/welder-1000.png",
-    name: "Welder 1000",
-    type: "A (Fully Insulated)",
-    currentRating: "1000 AMPS",
-    material: "Steel Body with Steel Jaws",
-    electrodeSize: "Upto 4mm (Economy Range)",
-    insulation: "PP",
-  },
-  {
-    image:
-      "/products/Electrical-Welding-Accessories/welding-holder/chota-bheem.webp",
-    name: "Chota Bheem",
-    type: "B (Semi-Insulated)",
-    currentRating: "250-400 AMPS",
-    material: "Steel Body with Steel Jaws",
-    electrodeSize: "Upto 4mm",
-    insulation: "DMC",
-  },
-
-  // From image_5403d5.jpg
-  {
-    image: "/products/Electrical-Welding-Accessories/welding-holder/j01.png",
-    name: "J01",
-    type: "B (Semi-Insulated)",
-    currentRating: "200 AMPS",
-    material: "Steel Body with Steel Jaws",
-    electrodeSize: "Upto 4mm", // Note: image shows partial details, inferred standard specs where applicable or exact text
-    insulation: "PP (Economy Range)",
-  },
-  {
-    image: "/products/Electrical-Welding-Accessories/welding-holder/j503.png",
-    name: "J503",
-    type: "A (Fully-Insulated)",
-    currentRating: "400-600 AMPS",
-    material: "Brass Body (Light)",
-    electrodeSize: "Upto 4mm",
-    insulation: "Nylon Fiber Glass",
-  },
-  {
-    image:
-      "/products/Electrical-Welding-Accessories/welding-holder/axespark.png",
-    name: "AXESPARK",
-    type: "A (Fully-Insulated)",
-    currentRating: "600-800 AMPS",
-    material: "Brass Body (Light)",
-    electrodeSize: "Upto 6.3mm",
-    insulation: "DMC",
-  },
-  {
-    image: "/products/Electrical-Welding-Accessories/welding-holder/j11.png",
-    name: "J11",
-    type: "A (Fully-Insulated)",
-    currentRating: "600-800 AMPS",
-    material: "Brass Body (Heavy Duty)",
-    electrodeSize: "Upto 6.3mm",
-    insulation: "DMC",
-  },
-  {
-    image: "/products/Electrical-Welding-Accessories/welding-holder/j1400.png",
-    name: "J1400",
-    type: "A & B (Fully & Semi Insulated)",
-    currentRating: "1200 AMPS",
-    material: "Steel Body with Metal Jaws & Copper Jaws",
-    electrodeSize: "Upto 6.3mm",
-    insulation: "DMC (Heat Proof)",
-  },
-  {
-    image:
-      "/products/Electrical-Welding-Accessories/welding-holder/axepert-1000.png",
-    name: "AXEPERT 1000",
-    type: "A (Fully-Insulated)",
-    currentRating: "1000 AMPS",
-    material: "For Brass Body",
-    electrodeSize: "Upto 6.3mm",
-    insulation:
-      "DMC (Heat Proof & Soft Proof) (Suitable for Heavy Industries & Ship Building)",
-  },
-];
-
-export const earthingClamp = [
-  {
-    image:
-      "/products/Electrical-Welding-Accessories/earthing-clamp/croc-600.jpg",
-    name: "CROC 600",
-    type: "Crocodile",
-    currentRating: "600 AMPS",
-    material: "Copper Plated Jaws/Steel Plated Jaws With Heavy Copper Shunt",
-    baseBody: "Steel Body",
-    color: "Zinc Plated",
-    electrodeSize: "Upto 6.3mm",
-  },
-  {
-    image:
-      "/products/Electrical-Welding-Accessories/earthing-clamp/imp600.webp",
-    name: "IMP600",
-    type: "Crocodile",
-    currentRating: "600 AMPS",
-    material: "Copper Plated Jaws With Copper Plated Shunt",
-    baseBody: "Steel Body",
-    color: "Zinc Plated",
-    electrodeSize: "Upto 6.3mm",
-  },
-  {
-    image: "/products/Electrical-Welding-Accessories/earthing-clamp/pc600.jpg",
-    name: "PC600",
-    type: "Crocodile",
-    currentRating: "600 AMPS",
-    material: "Copper Plated Jaws/Steel Plated Jaws With Heavy Copper Shunt",
-    baseBody: "Steel Body",
-    color: "Black Powder Coated",
-    electrodeSize: "Upto 6.3mm",
-  },
-  {
-    image:
-      "/products/Electrical-Welding-Accessories/earthing-clamp/croc400.jpeg",
-    name: "CROC400",
-    type: "Crocodile",
-    currentRating: "400 AMPS",
-    material: "Steel Plated Jaws With Heavy Copper Shunt",
-    baseBody: "Steel Body",
-    color: "Zinc Plated",
-    electrodeSize: "Upto 6.3mm",
-  },
-  {
-    image:
-      "/products/Electrical-Welding-Accessories/earthing-clamp/ic-400b.webp",
-    name: "IC 400B",
-    type: "Crocodile",
-    currentRating: "400 AMPS",
-    material: "Zinc Plated Jaws With Heavy Copper Shunt",
-    baseBody: "Steel Body",
-    color: "Black Powder Coated",
-    insulation: "Heat proof/Shock Proof",
-    electrodeSize: "Upto 6.3mm",
-  },
-  {
-    image:
-      "/products/Electrical-Welding-Accessories/earthing-clamp/ic-400w.jpg",
-    name: "IC 400W",
-    type: "Crocodile",
-    currentRating: "400 AMPS",
-    material: "Zinc Plated Jaws With Heavy Copper Shunt",
-    baseBody: "Steel Body",
-    color: "Zinc Plated",
-    insulation: "Heat proof/Shock Proof",
-    electrodeSize: "Upto 6.3mm",
-  },
-  {
-    image:
-      "/products/Electrical-Welding-Accessories/earthing-clamp/ic-600w.jpeg",
-    name: "IC 600W",
-    type: "Crocodile",
-    currentRating: "600 AMPS",
-    material: "Steel Plated Jaws With Heavy Copper Shunt",
-    baseBody: "Steel Body",
-    color: "Zinc Plated",
-    insulation: "Heat proof/Shock Proof",
-    electrodeSize: "Upto 6.3mm",
-  },
-];
-
-export const weldingCables = [
-  {
-    image:
-      "/products/Electrical-Welding-Accessories/welding-cable/welding-cable-copper.png",
-    name: "WELDING CABLE COPPER",
-    size: "Upto 95 Sq.MM",
-    rubberMaterial: "HOFR/TRS",
-    material: "Copper",
-  },
-  {
-    image:
-      "/products/Electrical-Welding-Accessories/welding-cable/welding-cable-aluminium.png",
-    name: "WELDING CABLE ALUMINIUM",
-    size: "Upto 95 Sq.MM",
-    rubberMaterial: "HOFR/TRS",
-    material: "Aluminium",
-  },
-];
-
-export const weldingProtectionEquipment = [
-  // WELDING HAND SCREEN
-  {
-    categoryTitle: "WELDING HAND SCREEN",
-    image:
-      "/products/Electrical-Welding-Accessories/welding-hand-screen-welding-helmet-red-fibre/d555-front-view.png",
-    name: "D555- FRONT VIEW",
-    material: "Fiber",
-  },
-  {
-    categoryTitle: "WELDING HAND SCREEN",
-    image:
-      "/products/Electrical-Welding-Accessories/welding-hand-screen-welding-helmet-red-fibre/d555-back-view.png",
-    name: "D555- BACK VIEW",
-    material: "Fiber",
-  },
-  {
-    categoryTitle: "WELDING HAND SCREEN",
-    image:
-      "/products/Electrical-Welding-Accessories/welding-hand-screen-welding-helmet-red-fibre/d400-front-view.png",
-    name: "D400- FRONT VIEW",
-    material: "Fiber",
-  },
-  {
-    categoryTitle: "WELDING HAND SCREEN",
-    image:
-      "/products/Electrical-Welding-Accessories/welding-hand-screen-welding-helmet-red-fibre/d400-back-view.png",
-    name: "D400- BACK VIEW",
-    material: "Fiber",
-  },
-
-  // WELDING HELMET
-  {
-    categoryTitle: "WELDING HELMET",
-    image:
-      "/products/Electrical-Welding-Accessories/welding-hand-screen-welding-helmet-red-fibre/d555.png",
-    name: "D555",
-    category: "Welding Helmet",
-    designConstruction: "AS PER IS: 1179/1967",
-    features: "Unbreakable Light Weight",
-    material: "Reinforced Plastic",
-    filterAndFilterCoverSize: "108x84mm",
-  },
-  {
-    categoryTitle: "WELDING HELMET",
-    image:
-      "/products/Electrical-Welding-Accessories/welding-hand-screen-welding-helmet-red-fibre/d400.png",
-    name: "D400",
-    category: "Welding Helmet",
-    designConstruction: "AS PER IS: 1179/1967",
-    features: "Unbreakable Light Weight",
-    material: "Reinforced Plastic",
-    filterAndFilterCoverSize: "108x84mm",
-  },
-
-  // AUTO DARKENING WELDING HELMET
-  {
-    categoryTitle: "AUTO DARKENING WELDING HELMET",
-    image:
-      "/products/Electrical-Welding-Accessories/welding-hand-screen-welding-helmet-red-fibre/ad500.png",
-    name: "AD500",
-    category: "Auto Darkening Welding Helmet",
-    filterSize: "110X90X9MM",
-    viewArea: "93X43MM",
-    lightShade: "4 DIN",
-    darkShade: "9-13 DIN",
-    operatingTemp: "-5 To 55 DEG. CEL.",
-  },
-  {
-    categoryTitle: "AUTO DARKENING WELDING HELMET",
-    image:
-      "/products/Electrical-Welding-Accessories/welding-hand-screen-welding-helmet-red-fibre/ad2-0.png",
-    name: "AD2.0",
-    category: "Auto Darkening Welding Helmet",
-    features: "Larger View Area",
-    lightShade: "4 DIN",
-    darkShade: "9-13 DIN",
-    operatingTemp: "-5 To 55°C",
-    power: "HIGH POWER BATTERY",
-    additionalFeatures: "LIGHT WEIGHT AND HIGH PERFORMANCE",
-  },
-];
-
-export const singleStageGasRegulators = [
-  {
-    image:
-      "/products/Gas-Welding-And-Cutting-Equipments/single-stage/kt1000.png",
-    name: "KT1000",
-    body: "Full Brass",
-    availableIn: "Oxygen, Argon, CO2, Acetylene (D.A.) Gases",
-    finish: "Brass Finish",
-  },
-  {
-    image:
-      "/products/Gas-Welding-And-Cutting-Equipments/single-stage/et1000.png",
-    name: "ET1000",
-    body: "Full Brass Forger Body",
-    availableIn: "Oxygen, Argon, CO2, Acetylene (D.A.), L.P.G Gases",
-    finish: "Brass Finish",
-  },
-  {
-    image:
-      "/products/Gas-Welding-And-Cutting-Equipments/single-stage/ht1000.png",
-    name: "HT1000",
-    body: "Base Body Brass Forged",
-    availableIn: "Oxygen, Argon, CO2, Acetylene (D.A.) Gases",
-    finish: "Powder Coated",
-  },
-  {
-    image:
-      "/products/Gas-Welding-And-Cutting-Equipments/single-stage/bt1000.png",
-    name: "BT1000",
-    body: "Base Body Brass, Front Bonnet Alu",
-    availableIn: "Oxygen, Argon, CO2, Acetylene (D.A.) Gases",
-    finish: "Powder Coated",
-  },
-  {
-    image:
-      "/products/Gas-Welding-And-Cutting-Equipments/single-stage/double-gauge-lpg-forged-brass-body.png",
-    name: "DOUBLE GAUGE LPG FORGED BRASS BODY",
-  },
-  {
-    image:
-      "/products/Gas-Welding-And-Cutting-Equipments/single-stage/lpg-regulator-mini-model-axetra-life.png",
-    name: "LPG REGULATOR MINI MODEL: AXETRA LIFE",
-  },
-  {
-    image:
-      "/products/Gas-Welding-And-Cutting-Equipments/single-stage/vertical-adapter-for-double-gauge-lpg.png",
-    name: "VERTICAL ADAPTER FOR DOUBLE GAUGE LPG",
-  },
-  {
-    image:
-      "/products/Gas-Welding-And-Cutting-Equipments/single-stage/single-gauge-lpg-forged-brass-body.png",
-    name: "SINGLE GAUGE LPG FORGED BRASS BODY",
-  },
-  {
-    image:
-      "/products/Gas-Welding-And-Cutting-Equipments/single-stage/brass-polished-brass-body-with-detachable-3-8-nut.png",
-    name: "BRASS-POLISHED BRASS BODY WITH DETACHABLE 3/8 NUT",
-  },
-  {
-    image:
-      "/products/Gas-Welding-And-Cutting-Equipments/single-stage/steel-coated-brass-body-with-detachable-3-8-nut-nipple.png",
-    name: "STEEL-COATED BRASS BODY WITH DETACHABLE 3/8 NUT NIPPLE",
-  },
-];
-
-export const twoStageMultiStageRegulators = [
-  {
-    image:
-      "/products/Gas-Welding-And-Cutting-Equipments/two-stage-multi-stage/kt1000.png",
-    name: "KT1000",
-    body: "Full Brass",
-    availableIn: "Oxygen, Argon, CO2, Acetylene (D.A.) Gases",
-    finish: "Brass Finish",
-  },
-  {
-    image:
-      "/products/Gas-Welding-And-Cutting-Equipments/two-stage-multi-stage/et1000.png",
-    name: "ET1000",
-    body: "Full Brass Forger Body",
-    availableIn: "Oxygen, Argon, CO2, Acetylene (D.A.), L.P.G Gases",
-    finish: "Brass Finish",
-  },
-  {
-    image:
-      "/products/Gas-Welding-And-Cutting-Equipments/two-stage-multi-stage/ht1000.png",
-    name: "HT1000",
-    body: "Base Body Brass Forged",
-    availableIn: "Oxygen, Argon, CO2, Acetylene (D.A.) Gases",
-    finish: "Powder Coated",
-  },
-  {
-    image:
-      "/products/Gas-Welding-And-Cutting-Equipments/two-stage-multi-stage/bt1000.png",
-    name: "BT1000",
-    body: "Base Body Brass, Front Bonnet Alu",
-    availableIn: "Oxygen, Argon, CO2, Acetylene (D.A.) Gases",
-    finish: "Powder Coated",
-  },
-];
-
-export const manualCuttingBlowPipes = [
-  {
-    image:
-      "/products/Gas-Welding-And-Cutting-Equipments/manual-cutting-blow-pipe/jc600.png",
-    name: "JC600",
-    certificationIcon: "/icon/isi.png",
-    bodyHeadSocket: "Made by brass",
-    pipes: "All pipes brass/copper",
-    suitability:
-      "Suitable with LPG or acetylene as fuel gas with B type and A type nozzle respectively",
-  },
-  {
-    image:
-      "/products/Gas-Welding-And-Cutting-Equipments/manual-cutting-blow-pipe/jc500.jpg",
-    name: "JC500",
-    certificationIcon: "/icon/isi.png",
-    bodyHeadSocket: "Made by forged brass",
-    pipes: "All pipes brass",
-    suitability:
-      "Suitable with LPG or acetylene as fuel gas with B type and A type nozzle respectively",
-  },
-  {
-    image:
-      "/products/Gas-Welding-And-Cutting-Equipments/manual-cutting-blow-pipe/jc200.png",
-    name: "JC200",
-    bodyHeadSocket: "Made by pressure-casting brass",
-    pipes: "Stainless steel/ brass",
-    suitability:
-      "Suitable with LPG or acetylene as fuel gas with Btype and A type nozzle respectively",
-    frontLever: "Stainless steel",
-  },
-];
-
-export const nmCuttingTorches = [
-  {
-    image:
-      "/products/Gas-Welding-And-Cutting-Equipments/nm-cutting-torch/jc-250-nm.png",
-    name: "JC 250 NM",
-    certificationIcon: "/icon/isi.png",
-    bodyHeadSocket: "Made by forged brass",
-    pipes: "All pipes seamless stainless steel",
-    suitability:
-      "Suitable with LPG or acetylene as fuel gas with B type and A type nozzle respectively",
-    features: "Special metal alloy hand grip, Light weight",
-  },
-  {
-    image:
-      "/products/Gas-Welding-And-Cutting-Equipments/nm-cutting-torch/jc-300-nm.png",
-    name: "JC 300 NM",
-    certificationIcon: "/icon/isi.png",
-    bodyHeadSocket: "Made by forged brass",
-    pipes: "All pipes seamless stainless steel",
-    suitability:
-      "Suitable with LPG or acetylene as fuel gas with PNME and ANME nozzle respectively",
-    lever: "Side lever",
-  },
-  {
-    image:
-      "/products/Gas-Welding-And-Cutting-Equipments/nm-cutting-torch/nm250.png",
-    name: "NM250",
-    bodyHeadSocket: "Made by pressure-casting brass",
-    pipes: "All pipes stainless steel",
-    suitability:
-      "Suitable with LPG or acetylene as fuel gas with PNME and ANME nozzle respectively",
-    lever: "Side lever",
-  },
-  {
-    image:
-      "/products/Gas-Welding-And-Cutting-Equipments/nm-cutting-torch/jc-400-nm.png",
-    name: "JC 400 NM",
-    certificationIcon: "/icon/isi.png",
-    bodyHeadSocket: "Made by forged brass",
-    pipes: "All pipes stainless steel",
-    suitability:
-      "Suitable with LPG or acetylene as fuel gas with PNME and ANME nozzle respectively",
-    lever: "Front lever",
-  },
-];
-
-export const gasCuttingNozzles = [
-  {
-    image:
-      "/products/Gas-Welding-And-Cutting-Equipments/gas-cutting-nozzle/a-type.png",
-    name: "A TYPE",
-    certificationIcon: "/icon/isi.png",
-    fuelGas: "Acetylene/D.A",
-    usedIn: "Two Pipe Manual Cutting Blowpipe",
-  },
-  {
-    image:
-      "/products/Gas-Welding-And-Cutting-Equipments/gas-cutting-nozzle/b-type.jpg",
-    name: "B TYPE",
-    certificationIcon: "/icon/isi.png",
-    fuelGas: "L.P.G/BMCG",
-    usedIn: "Two Pipe Manual Cutting Blowpipe",
-  },
-  {
-    image:
-      "/products/Gas-Welding-And-Cutting-Equipments/gas-cutting-nozzle/anme-cutting-nozzle.png",
-    name: "ANME CUTTING NOZZLE",
-    certificationIcon: "/icon/isi.png",
-    fuelGas: "Acetylene/D.A",
-    usedIn: "Three Pipe Manual Cutting Blowpipe/NM Cutting Torch",
-  },
-  {
-    image:
-      "/products/Gas-Welding-And-Cutting-Equipments/gas-cutting-nozzle/pnme-cutting-nozzle.png",
-    name: "PNME CUTTING NOZZLE",
-    certificationIcon: "/icon/isi.png",
-    fuelGas: "L.P.G/BMCG",
-    usedIn: "Three Pipe Manual Cutting Blowpipe/NM Cutting Torch",
-  },
-];
-
-export const gasWeldingTorches = [
-  {
-    image:
-      "/products/Gas-Welding-And-Cutting-Equipments/gas-welding-torch/at-100.png",
-    name: "AT 100",
-    torchType: "Small Set / Big Set",
-    pipes: "All PIPES Brass",
-    suitability: "Suitable with LPG or acetylene as fuel gas",
-    tips: "Swaged Copper",
-    controlKnob: "Red for fuel gas & Blue for oxygen",
-    handGrip: "Full brass with fibre hand grip",
-  },
-  {
-    image:
-      "/products/Gas-Welding-And-Cutting-Equipments/gas-welding-torch/kt-100-big.png",
-    name: "KT 100 (BIG)",
-    torchType: "Big Set",
-    pipes: "All PIPES Brass",
-    suitability: "Suitable with LPG or acetylene as fuel gas",
-    tips: "Swaged Copper",
-    controlKnob: "Red for fuel gas & Blue for oxygen",
-    handGrip: "Full brass with brass hand grip",
-  },
-  {
-    image:
-      "/products/Gas-Welding-And-Cutting-Equipments/gas-welding-torch/kt-100-small.png",
-    name: "KT 100 (SMALL)",
-    torchType: "Small Set",
-    pipes: "All PIPES Brass",
-    suitability: "Suitable with LPG or acetylene as fuel gas",
-    tips: "Swaged Copper",
-    controlKnob: "Red for fuel gas & Blue for oxygen",
-    handGrip: "Full brass with brass hand grip",
-  },
-  {
-    image:
-      "/products/Gas-Welding-And-Cutting-Equipments/gas-welding-torch/hp1.png",
-    name: "HP1",
-    type: "High Pressure Gas Welding Torch",
-    pipes: "All PIPES Brass",
-    suitability: "Suitable with LPG or acetylene as fuel gas",
-    tips: "Swaged Copper",
-    controlKnob: "Red for fuel gas & Blue for oxygen",
-    nozzles: "4 Tips/Nozzles of different size",
-  },
-  {
-    image:
-      "/products/Gas-Welding-And-Cutting-Equipments/gas-welding-torch/hp2.png",
-    name: "HP2",
-    type: "High Pressure Gas Welding Torch",
-    pipes: "Copper",
-    suitability: "Suitable with LPG or acetylene as fuel gas",
-    tips: "Swaged Copper",
-    controlKnob: "Red for fuel gas & Blue for oxygen",
-    nozzles: "6 Tips/Nozzles of different size",
-    extraFeature: "Detachable Nut Nipple",
-  },
-];
-
-export const weldingHoses = [
-  {
-    image:
-      "/products/Gas-Welding-And-Cutting-Equipments/welding-hose/welding-hose-rubber.webp",
-    name: "WELDING HOSE (RUBBER)",
-    wrapping: "Wrapping/Plain",
-    dia: "8MM/10MM",
-    color: "Red For Fuel gas/Blue For Oxygen gas",
-  },
-  {
-    image:
-      "/products/Gas-Welding-And-Cutting-Equipments/welding-hose/welding-hose-tpr.jpg",
-    name: "WELDING HOSE (TPR)",
-    wrapping: "Wrapping/Plain",
-    dia: "8MM/10MM",
-    color: "Red For Fuel gas/Blue For Oxygen gas",
-    roleSize: "100M",
-  },
-];
-
-export const heatingTorch = [
-  {
-    image:
-      "/products/Gas-Welding-And-Cutting-Equipments/heating-torch/heating-torch.png",
-    name: "HEATING TORCH",
-  },
-];
-
-export const argonCo2FlowMeters = [
-  {
-    image:
-      "/products/Gas-Welding-And-Cutting-Equipments/argon-co-flow-meter/argon-co2-flow-meter-1.png",
-    name: "Argon CO₂ Flow Meter",
-  },
-  {
-    image:
-      "/products/Gas-Welding-And-Cutting-Equipments/argon-co-flow-meter/argon-co2-flow-meter-2.png",
-    name: "Argon CO₂ Flow Meter",
-  },
-  {
-    image:
-      "/products/Gas-Welding-And-Cutting-Equipments/argon-co-flow-meter/argon-co2-flow-meter-3.png",
-    name: "Argon CO₂ Flow Meter",
-  },
-  {
-    image:
-      "/products/Gas-Welding-And-Cutting-Equipments/argon-co-flow-meter/argon-co2-flow-meter-4.png",
-    name: "Argon CO₂ Flow Meter",
-  },
-];
-
-export const handProtection = [
-  {
-    image: "/products/Personal-Protective-Equipment/h1.jpg",
-    name: "HAND PROTECTION",
-  },
-  {
-    image: "/products/Personal-Protective-Equipment/h2.webp",
-    name: "HAND PROTECTION",
-  },
-];
-
-export const headProtection = [
-  {
-    image: "/products/Personal-Protective-Equipment/he1.png",
-    name: "HEAD PROTECTION",
-  },
-  {
-    image: "/products/Personal-Protective-Equipment/he2.png",
-    name: "HEAD PROTECTION",
-  },
-  {
-    image: "/products/Personal-Protective-Equipment/he3.png",
-    name: "HEAD PROTECTION",
-  },
-];
-
-export const faceProtection = [
-  {
-    image: "/products/Personal-Protective-Equipment/f1.png",
-    name: "FACE PROTECTION",
-  },
-  {
-    image: "/products/Personal-Protective-Equipment/f2.png",
-    name: "FACE PROTECTION",
-  },
-  {
-    image: "/products/Personal-Protective-Equipment/f3.png",
-    name: "FACE PROTECTION",
-  },
-  {
-    image: "/products/Personal-Protective-Equipment/f4.png",
-    name: "FACE PROTECTION",
-  },
-];
-
-export const eyeProtectionEquipment = [
-  {
-    image: "/products/Personal-Protective-Equipment/e1.png",
-    name: "AUTO-DARKENING WELDING GOGGLE",
-    shade: "Auto Adjust 3 to 11 DIN",
-    extra: "Adjustable Headband (Optional)",
-    powerSupply: "Lithium Battery & Solar Power 60 mAh Min.",
-    switchingTime: "<5/1000 s",
-    delayTime: "0.1-0.3 s",
-    material: "PC/ABS",
-  },
-  {
-    image: "/products/Personal-Protective-Equipment/e2.png",
-    name: "CHEMICAL SPLASH EYE SAFETY GOGGLES",
-    features:
-      "Soft clear vinyl chemical resistant frame for maximum comfort and 100% sealing Unique indirect ventilation system for air circulation",
-  },
-  {
-    image: "/products/Personal-Protective-Equipment/e3.png",
-    name: "AXE 01",
-    lensColour: "CLEAR",
-    features:
-      "Offers Protection From Excessive Glare, Provides 99% Protection From Rays, Scratch Resistant Lenses (Hardcoated), 100% Polycarbonate Lenses",
-  },
-  {
-    image: "/products/Personal-Protective-Equipment/e4.png",
-    name: "AXE 01",
-    lensColour: "GREY/11DIN",
-    features:
-      "Offers Protection From Excessive Glare, Provides 99% Protection From Rays, Scratch Resistant Lenses (Hardcoated), 100% Polycarbonate Lenses",
-  },
-  {
-    image: "/products/Personal-Protective-Equipment/e5.png",
-    name: "AXE 100",
-    lensColour: "CLEAR",
-    features:
-      "Offers Protection From Excessive Glare, Provides 99% Protection From Rays, Scratch Resistant Lenses (Hardcoated), 100% Polycarbonate Lenses",
-  },
-  {
-    image: "/products/Personal-Protective-Equipment/e6.png",
-    name: "AXE 100",
-    lensColour: "GREY",
-    features:
-      "Offers Protection From Excessive Glare, Provides 99% Protection From Rays, Scratch Resistant Lenses (Hardcoated), 100% Polycarbonate Lenses",
-  },
-  {
-    image: "/products/Personal-Protective-Equipment/e7.png",
-    name: "WELDER",
-    lensColour: "CLEAR",
-    features:
-      "Offers Protection From Excessive Glare, Provides 99% Protection From Rays, Scratch Resistant Lenses (Hardcoated), 100% Polycarbonate Lenses",
-  },
-  {
-    image: "/products/Personal-Protective-Equipment/e8.png",
-    name: "WELDER",
-    lensColour: "GREY",
-    features:
-      "Offers Protection From Excessive Glare, Provides 99% Protection From Rays, Scratch Resistant Lenses (Hardcoated), 100% Polycarbonate Lenses",
-  },
-  {
-    image: "/products/Personal-Protective-Equipment/e9.webp",
-    name: "GLASS",
-    lensMaterial: "Glass",
-    shade: "Clear(White)",
-    design: "Side Cup With Steel Jali For Indirect Air Vent",
-  },
-  {
-    image: "/products/Personal-Protective-Equipment/e10.jpg",
-    name: "GLASS",
-    lensMaterial: "Glass",
-    shade: "Grey/11 DIN German",
-    design: "Side Cup With Steel Jali For Indirect Air Vent",
-  },
-  {
-    image: "/products/Personal-Protective-Equipment/e11.webp",
-    name: "CT100",
-    lensMaterial: "Glass (Replaceable Lens)",
-    shade: "4 & 5 Round Green",
-    type: "Glass Lens",
-  },
-  {
-    image: "/products/Personal-Protective-Equipment/e12.png",
-    name: "BT100",
-    lensMaterial: "Glass (Replaceable Lens)",
-    shade: "4 & 5 Round Green",
-    type: "Glass Lens",
-  },
-];
-
-export const earProtectionEquipment = [
-  {
-    image: "/products/Personal-Protective-Equipment/ea1.png",
-    name: "EAR MUFF",
-  },
-];
-
-export const tigTorches = [
-  {
-    image: "/products/TIG/t1.png",
-    name: "TIG TORCHES",
-  },
-  {
-    image: "/products/TIG/t2.png",
-    name: "TIG TORCHES",
-  },
-];
-
-export const tigSpares = [
-  {
-    image: "/products/TIG/t3.png",
-    name: "TIG SPARES",
-  },
-  {
-    image: "/products/TIG/t4.png",
-    name: "TIG SPARES",
-  },
-  {
-    image: "/products/TIG/t5.png",
-    name: "TIG SPARES",
-  },
-];
-
-export const migTorches = [
-  {
-    image: "/products/MIG/m1.jpg",
-    name: "24KD TORCH",
-  },
-  {
-    image: "/products/MIG/m2.jpg",
-    name: "36KD TORCH",
-  },
-  {
-    image: "/products/MIG/m3.png",
-    name: "TORCH 25AK-3mtr",
-  },
-  {
-    image: "/products/MIG/m4.png",
-    name: "TORCH 36KD-3mtr",
-  },
-  {
-    image: "/products/MIG/m5.png",
-    name: "TORCH 24KD-3mtr",
-  },
-  {
-    image: "/products/MIG/m6.jpg",
-    name: "ST HYBRID",
-  },
-  {
-    image: "/products/MIG/m7.png",
-    name: "MLR",
-  },
-  {
-    image: "/products/MIG/m8.png",
-    name: "BND",
-  },
-  {
-    image: "/products/MIG/m9.png",
-    name: "TWC",
-  },
-  {
-    image: "/products/MIG/m10.png",
-    name: "SUREGRIP ULTRA BZL",
-  },
-  {
-    image: "/products/MIG/m11.png",
-    name: "TRG",
-  },
-  {
-    image: "/products/MIG/m12.png",
-    name: "SUREGRIP BZL",
-  },
-  {
-    image: "/products/MIG/m13.png",
-    name: "SPR",
-  },
-  {
-    image: "/products/MIG/m14.png",
-    name: "DURAGRIP BZL",
-  },
-  {
-    image: "/products/MIG/m15.png",
-    name: "SUREGRIP ALW",
-  },
-  {
-    image: "/products/MIG/m16.png",
-    name: "PNA",
-  },
-  {
-    image: "/products/MIG/m17.png",
-    name: "OXM",
-  },
-  {
-    image: "/products/MIG/m18.png",
-    name: "SMG",
-  },
-  {
-    image: "/products/MIG/m19.png",
-    name: "TORCH 15AK",
-  },
-  {
-    image: "/products/MIG/m20.png",
-    name: "TORCH 25AK",
-  },
-];
-
-export const migSpares = [
-  {
-    image: "/products/MIG/n1.png",
-    name: "BINZEL(EURO) LINER",
-  },
-  {
-    image: "/products/MIG/n2.png",
-    name: "PANA LINER",
-  },
-  {
-    image: "/products/MIG/n3.png",
-    name: "PSF LINER",
-  },
-  {
-    image: "/products/MIG/n4.png",
-    name: "TEFLON LINER",
-  },
-  {
-    image: "/products/MIG/n5.jpg",
-    name: "HEXA TIP",
-    spec: "M6*40*0.8mm",
-  },
-  {
-    image: "/products/MIG/n6.jpg",
-    name: "HEXA TIP",
-    spec: "M6*40*1.0mm",
-  },
-  {
-    image: "/products/MIG/n7.jpg",
-    name: "HEXA TIP",
-    spec: "M6*40*1.6mm",
-  },
-  {
-    image: "/products/MIG/n8.jpg",
-    name: "HEXA TIP",
-    spec: "M6*45*1.6mm",
-  },
-  {
-    image: "/products/MIG/n9.jpg",
-    name: "HEXA TIP",
-    spec: "M6*45*1.0mm",
-  },
-  {
-    image: "/products/MIG/n10.jpg",
-    name: "HEXA TIP",
-    spec: "M6*45*1.2mm",
-  },
-  {
-    image: "/products/MIG/n11.jpg",
-    name: "HEXA TIP",
-    spec: "M6*45*0.8mm",
-  },
-];
-
-export const migNozzles = [
-  {
-    image: "/products/MIG/o1.png",
-    name: "36KD COPPER",
-  },
-  {
-    image: "/products/MIG/o2.png",
-    name: "36KD BRASS",
-  },
-  {
-    image: "/products/MIG/o3.png",
-    name: "24KD BRASS",
-  },
-  {
-    image: "/products/MIG/o4.png",
-    name: "24KD COPPER",
-  },
-  {
-    image: "/products/MIG/o5.png",
-    name: "PANA350 COPPER",
-  },
-  {
-    image: "/products/MIG/o6.png",
-    name: "15AK/25AK",
-  },
-];
-
-export const plasmaTorches = [
-  {
-    image: "/products/Plasma/p1.webp",
-    name: "PLASMA TORCHES",
-  },
-  {
-    image: "/products/Plasma/p2.webp",
-    name: "PLASMA TORCHES",
-  },
-];
-
-export const plasmaSparesAndHeads = [
-  {
-    image: "/products/Plasma/p3.webp",
-    name: "PLASMA NOZZLE & ELECTRODE",
-  },
-  {
-    image: "/products/Plasma/p4.webp",
-    name: "PLASMA HEAD",
-  },
-  {
-    image: "/products/Plasma/p5.webp",
-    name: "PLASMA HEAD",
-  },
-];
-
-export const weldingMachinesAndSpares = [
-  // From image_60c5de.jpg
-  {
-    image: "/products/welding-machine/w1.jpg",
-    name: "WELDING MACHINE",
-    categoryTitle: "WELDING MACHINE",
-  },
-  {
-    image: "/products/welding-machine/w2.png",
-    name: "WELDING MACHINE",
-    categoryTitle: "WELDING MACHINE",
-  },
-  {
-    image: "/products/welding-machine/w3.png",
-    name: 'FAN 4" 220V AC',
-    categoryTitle: "WELDING MACHINE SPARES",
-  },
-  {
-    image: "/products/welding-machine/w4.png",
-    name: 'FAN 6" 380V OVAL',
-    categoryTitle: "WELDING MACHINE SPARES",
-  },
-  {
-    image: "/products/welding-machine/w5.png",
-    name: 'FAN 8" 220V BLUE',
-    categoryTitle: "WELDING MACHINE SPARES",
-  },
-  {
-    image: "/products/welding-machine/w6.png",
-    name: 'FAN 3.5" 24V DC',
-    categoryTitle: "WELDING MACHINE SPARES",
-  },
-  {
-    image: "/products/welding-machine/w7.png",
-    name: 'FAN 4" 24V DC',
-    categoryTitle: "WELDING MACHINE SPARES",
-  },
-  {
-    image: "/products/welding-machine/w8.png",
-    name: 'FAN 6" 415V BLUE',
-    categoryTitle: "WELDING MACHINE SPARES",
-  },
-  {
-    image: "/products/welding-machine/w9.png",
-    name: 'FAN 8" 415V BLUE',
-    categoryTitle: "WELDING MACHINE SPARES",
-  },
-
-  // From image_60c8e2.png
-  {
-    image: "/products/welding-machine/w10.png",
-    name: "WIREFEEDER",
-    categoryTitle: "WELDING MACHINE SPARES",
-  },
-  {
-    image: "/products/welding-machine/w11.png",
-    name: "PANA WIREFEEDER 2 ROLL",
-    categoryTitle: "WELDING MACHINE SPARES",
-  },
-  {
-    image: "/products/welding-machine/w12.png",
-    name: "EURO WIREFEEDER 2 ROLL",
-    categoryTitle: "WELDING MACHINE SPARES",
-  },
-  {
-    image: "/products/welding-machine/w13.png",
-    name: "PMDC MOTOR",
-    categoryTitle: "WELDING MACHINE SPARES",
-  },
-  {
-    image: "/products/welding-machine/w14.png",
-    name: "EURO WIREFEEDER 4 ROLL",
-    categoryTitle: "WELDING MACHINE SPARES",
-  },
-];
-
-export const otherProducts = [
-  {
-    image: "/products/other/o1.jpg",
-    name: "CABLE CONNECTOR",
-  },
-  {
-    image: "/products/other/o2.png",
-    name: "MALE/FEMALE JOINTER",
-  },
-  {
-    image: "/products/other/o3.png",
-    name: "CABLE CONNECTOR",
-  },
-  {
-    image: "/products/other/o4.png",
-    name: "FEMALE CONNECTOR",
-  },
-  {
-    image: "/products/other/o5.png",
-    name: "CABLE CONNECTOR",
-  },
-  {
-    image: "/products/other/o6.png",
-    name: "CABLE CONNECTOR",
-  },
-  {
-    image: "/products/other/o7.png",
-    name: "MALE CONNECTOR",
-  },
-  {
-    image: "/products/other/o8.png",
-    name: "CABLE CONNECTOR",
-  },
-  {
-    image: "/products/other/o9.png",
-    name: "CABLE CONNECTOR",
-  },
-  {
-    image: "/products/other/o10.png",
-    name: "CABLE CONNECTOR",
-  },
-  {
-    image: "/products/other/o11.png",
-    name: "CABLE CONNECTOR",
-  },
-  {
-    image: "/products/other/o12.png",
-    name: "CABLE CONNECTOR",
-  },
-  {
-    image: "/products/other/o13.png",
-    name: "CABLE CONNECTOR",
+export const products = [
+  {
+    id: 1,
+    name: "BAKING PAPER CUPS",
+    slug: "baking-paper-cups",
+    category: "PAPER CUPS",
+    images: [
+      {
+        id: "img_cups_1",
+        url: "/shop/BAKING PAPER CUPS.png",
+        alt: "Baking Paper Cups Assorted Colors",
+      },
+    ],
+    tableData: [],
+  },
+  {
+    id: 2,
+    name: "Brownie Mould",
+    slug: "brownie-mould",
+    category: "MOULDS", // Yahan images array format mein hoti hain (agar future mein multiple images add karni hon)
+    images: [
+      {
+        id: "img_brownie_1",
+        url: "/shop/Brownie Mould.png",
+        alt: "Brownie Mould on Grass",
+      },
+    ], // Yahan table data bhi array of objects hota hai (jo mapping/loops ke liye standard hai)
+    tableData: [
+      {
+        itemCode: "BM-5025",
+        length: 50,
+        width: 50,
+        height: 25,
+      },
+      {
+        itemCode: "BM-6530",
+        length: 65,
+        width: 65,
+        height: 28,
+      },
+    ],
+  },
+  {
+    id: 3,
+    name: "Burger Paper",
+    slug: "burger-paper",
+    category: "FOOD WRAPPING",
+    images: [
+      {
+        id: "img_burger_1",
+        url: "/shop/Burger Paper.png",
+        alt: "Burger Paper Designs",
+      },
+    ],
+    tableData: [
+      {
+        item: "9x12",
+        width: 9,
+        length: 12,
+        packing: "40,000",
+      },
+      {
+        item: "10x12",
+        width: 10,
+        length: 12,
+        packing: "40,000",
+      },
+      {
+        item: "12x12",
+        width: 12,
+        length: 12,
+        packing: "23,000",
+      },
+      {
+        item: "18x24",
+        width: 18,
+        length: 24,
+        packing: "23,000",
+      },
+      {
+        item: "20x30",
+        width: 20,
+        length: 30,
+        packing: "20,000",
+      },
+    ],
+  },
+  {
+    id: 4,
+    name: "Butter Paper",
+    slug: "butter-paper",
+    category: "SHEET",
+    images: [
+      {
+        id: "img_butter_1",
+        url: "/shop/Butter Paper.png",
+        alt: "Butter Paper Sheets",
+      },
+    ],
+    tableData: [
+      {
+        item: "60x90",
+        width: 60,
+        length: 90,
+        packing: 1000,
+      },
+      {
+        item: "65x95",
+        width: 65,
+        length: 95,
+        packing: 1000,
+      },
+      {
+        item: "70x110",
+        width: 70,
+        length: 110,
+        packing: 1000,
+      },
+    ],
+  },
+  {
+    id: 5,
+    name: "Cake Base Board",
+    slug: "cake-base-board",
+    category: "CAKE",
+    images: [
+      {
+        id: "img_cake_base_1",
+        url: "/shop/Cake Base Board.png",
+        alt: "Cake Base Board Gold and Silver",
+      },
+      {
+        id: "img_cake_base_2",
+        url: "/shop/Cake Base Board2.png",
+        alt: "Stacked Cake Base Boards",
+      },
+    ],
+    tableData: [
+      {
+        size: 6,
+        moq: 5200,
+      },
+      {
+        size: 6.5,
+        moq: 5200,
+      },
+      {
+        size: 7,
+        moq: 5200,
+      },
+      {
+        size: 7.5,
+        moq: 5200,
+      },
+      {
+        size: 8,
+        moq: 5200,
+      },
+    ],
+  },
+  {
+    id: 6,
+    name: "Cake Box",
+    slug: "cake-box",
+    category: "BOX, CAKE",
+    images: [
+      {
+        id: "img_cake_box_1",
+        url: "/shop/Cake Box.png",
+        alt: "Gold Cake Box with Transparent Window",
+      },
+      {
+        id: "img_cake_box_2",
+        url: "/shop/Cake Box2.png",
+        alt: "Various Cake Boxes and Packaging",
+      },
+    ],
+    tableData: [
+      {
+        item: "6x6x4",
+        base: "7x7",
+        length: 4,
+        packing: 100,
+      },
+      {
+        item: "7x7x4",
+        base: "9x9",
+        length: 4,
+        packing: 100,
+      },
+      {
+        item: "8x8x5",
+        base: "10x10",
+        length: 5,
+        packing: 100,
+      },
+      {
+        item: "9x9x5",
+        base: "7x7",
+        length: 5,
+        packing: 100,
+      },
+      {
+        item: "10x10x5",
+        base: "9x9",
+        length: 5,
+        packing: 100,
+      },
+      {
+        item: "12x12x5",
+        base: "10x10",
+        length: 5,
+        packing: 100,
+      },
+    ],
+  },
+  {
+    id: 7,
+    name: "Cup Cake Liner",
+    slug: "cup-cake-liner",
+    category: "CAKE, PAPER CUPS",
+    images: [
+      {
+        id: "img_cup_cake_liner_1",
+        url: "/shop/Cup Cake Liner.png",
+        alt: "Cup Cake Liner Polka Dot Designs",
+      },
+    ],
+    tableData: [],
+    features: [
+      "High-Quality Material: Made from premium, food-grade paper that ensures safe and hygienic baking.",
+      "Greaseproof & Non-Stick: Prevents sticking and oil seepage, keeping cupcakes and muffins perfectly shaped.",
+      "Vibrant Colors & Designs: Available in a wide range of colors and patterns to match any occasion or theme.",
+      "Perfect for All Occasions: Ideal for birthdays, parties, weddings, festivals, and bakery displays.",
+      "Multiple Sizes Available: Choose from standard, mini, or large liners to suit different baking needs.",
+      "Eco-Friendly Choice: Biodegradable and recyclable materials that support sustainable baking practices.",
+      "Easy to Use: Fits standard cupcake/muffin trays for hassle-free baking and removal.",
+    ],
+  },
+  {
+    id: 8,
+    name: "Curl Cup Mould",
+    slug: "curl-cup-mould",
+    category: "MOULDS",
+    images: [
+      {
+        id: "img_curl_cup_mould_1",
+        url: "/shop/Curl Cup Mould.png",
+        alt: "Curl Cup Mould Assorted Colors on Wooden Tray",
+      },
+    ],
+    tableData: [
+      {
+        itemCode: "CCM-3025",
+        base: 30,
+        height: 25,
+        moq: 10000,
+      },
+      {
+        itemCode: "CCM-3830",
+        base: 38,
+        height: 30,
+        moq: 10000,
+      },
+      {
+        itemCode: "CCM-4435",
+        base: 44,
+        height: 35,
+        moq: 10000,
+      },
+      {
+        itemCode: "CCM-5040",
+        base: 50,
+        height: 40,
+        moq: 10000,
+      },
+    ],
+  },
+  {
+    id: 9,
+    name: "Food Wrapping Envelop",
+    slug: "food-wrapping-envelop",
+    category: "ENVELOP",
+    images: [
+      {
+        id: "img_food_wrapping_envelop_1",
+        url: "/shop/Food Wrapping Envelop.png",
+        alt: "Food Wrapping Envelop Designs",
+      },
+    ],
+    tableData: [
+      {
+        gusset: 60,
+        width: 110,
+        length: 180,
+        capacity: 1000,
+      },
+      {
+        gusset: 60,
+        width: 110,
+        length: 270,
+        capacity: 1000,
+      },
+      {
+        gusset: 70,
+        width: 150,
+        length: 270,
+        capacity: 1000,
+      },
+      {
+        gusset: 70,
+        width: 150,
+        length: 320,
+        capacity: 1000,
+      },
+      {
+        gusset: 70,
+        width: 150,
+        length: 410,
+        capacity: 1000,
+      },
+    ],
+  },
+  {
+    id: 10,
+    name: "Food Wrapping Roll",
+    slug: "food-wrapping-roll",
+    category: "FOOD WRAPPING",
+    images: [
+      {
+        id: "img_food_wrapping_roll_1",
+        url: "/shop/Food Wrapping Roll.png",
+        alt: "Food Wrapping Roll with Green Delicious Print",
+      },
+    ],
+    tableData: [
+      {
+        item: "11 mtr.",
+        width: "290mm",
+        length: "11 mtr.",
+        packing: 35,
+      },
+      {
+        item: "25 mtr.",
+        width: "290mm",
+        length: "25 mtr.",
+        packing: 35,
+      },
+      {
+        item: "1/2 kg",
+        width: "290mm",
+        packing: 25,
+      },
+      {
+        item: "1 kg",
+        width: "290mm",
+        packing: 20,
+      },
+    ],
+  },
+  {
+    id: 11,
+    name: "Panettone Baking Mould Cup",
+    slug: "panettone-baking-mould-cup",
+    category: "MOULDS",
+    images: [
+      {
+        id: "img_panettone_baking_mould_cup_1",
+        url: "/shop/Panettone Baking Mould Cup.png",
+        alt: "Panettone Baking Mould Cup Assorted Designs",
+      },
+    ],
+    tableData: [
+      {
+        itemCode: "PBM-5045",
+        base: 50,
+        height: 45,
+        packing: 3500,
+      },
+      {
+        itemCode: "PBM-6050",
+        base: 60,
+        height: 50,
+        packing: 3500,
+      },
+      {
+        itemCode: "BPM-6045",
+        base: 60,
+        height: 45,
+        packing: 3000,
+      },
+      {
+        itemCode: "BPM-6050",
+        base: 60,
+        height: 50,
+        packing: 3000,
+      },
+      {
+        itemCode: "BPM-7045",
+        base: 70,
+        height: 45,
+        packing: 2080,
+      },
+      {
+        itemCode: "BPM-7050",
+        base: 70,
+        height: 50,
+        packing: 2000,
+      },
+    ],
+  },
+  {
+    id: 12,
+    name: "Paper Envelop",
+    slug: "paper-envelop",
+    category: "ENVELOP",
+    images: [
+      {
+        id: "img_paper_envelop_1",
+        url: "/shop/Paper Envelop.png",
+        alt: "Paper Envelop with Newspaper Print",
+      },
+    ],
+    tableData: [
+      {
+        gusset: 60,
+        width: 110,
+        length: 180,
+        capacity: 1000,
+      },
+      {
+        gusset: 60,
+        width: 110,
+        length: 270,
+        capacity: 1000,
+      },
+      {
+        gusset: 70,
+        width: 150,
+        length: 270,
+        capacity: 1000,
+      },
+      {
+        gusset: 70,
+        width: 150,
+        length: 320,
+        capacity: 1000,
+      },
+      {
+        gusset: 70,
+        width: 150,
+        length: 410,
+        capacity: 1000,
+      },
+    ],
+  },
+  {
+    id: 13,
+    name: "Paper Wrap",
+    slug: "paper-wrap",
+    category: "SHEET",
+    images: [
+      {
+        id: "img_paper_wrap_1",
+        url: "/shop/Paper Wrap.png",
+        alt: "Paper Wrap Rolls Assorted Designs",
+      },
+    ],
+    tableData: [],
+    description:
+      "Labella offers food-grade paper wraps made from pure virgin paper. These wraps are greaseproof, breathable, and maintain food freshness. Perfect for various food items and suitable for different cooking methods, they are essential for restaurants and food businesses.",
+  },
+  {
+    id: 14,
+    name: "Pastry Base",
+    slug: "pastry-base",
+    category: "CAKE",
+    images: [
+      {
+        id: "img_pastry_base_1",
+        url: "/shop/Pastry Base.png",
+        alt: "Pastry Base Gold Boards",
+      },
+    ],
+    tableData: [
+      {
+        item: "90 mm Round",
+        width: 90,
+        length: 90,
+        packing: 3000,
+      },
+      {
+        item: "110 mm Round",
+        width: 90,
+        length: 90,
+        packing: 3000,
+      },
+      {
+        item: "75×115 mm Triangle",
+        width: 75,
+        length: 115,
+        packing: 3000,
+      },
+      {
+        item: "90×90 mm Square",
+        width: 90,
+        length: 90,
+        packing: 3000,
+      },
+      {
+        item: "70×150",
+        width: 70,
+        length: 150,
+        packing: 3000,
+      },
+    ],
+  },
+  {
+    id: 15,
+    name: "Pizza Box",
+    slug: "pizza-box",
+    category: "BOX",
+    images: [
+      {
+        id: "img_pizza_box_1",
+        url: "/shop/Pizza Box.png",
+        alt: "Pizza Box Red Design",
+      },
+    ],
+    tableData: [
+      {
+        item: "7x7x1.5",
+        base: "7x7",
+        length: 1.5,
+        packing: 100,
+      },
+      {
+        item: "9x9x1.5",
+        base: "9x9",
+        length: 1.5,
+        packing: 100,
+      },
+      {
+        item: "10x10x1.5",
+        base: "10x10",
+        length: 1.5,
+        packing: 100,
+      },
+    ],
+  },
+  {
+    id: 16,
+    name: "Plum cake Mould",
+    slug: "plum-cake-mould",
+    category: "MOULDS",
+    images: [
+      {
+        id: "img_plum_cake_mould_1",
+        url: "/shop/Plum cake Mould.png",
+        alt: "Plum cake Mould with Baked Cake",
+      },
+    ],
+    tableData: [
+      {
+        itemCode: "PCM-9550",
+        length: 95,
+        width: 50,
+        moq: 5000,
+      },
+      {
+        itemCode: "PCM-15050",
+        length: 150,
+        width: 65,
+        moq: 5000,
+      },
+      {
+        itemCode: "PCM-20065",
+        length: 200,
+        width: 65,
+        moq: 5000,
+      },
+    ],
+  },
+  {
+    id: 17,
+    name: "Plumpy Mould",
+    slug: "plumpy-mould",
+    category: "MOULDS",
+    images: [
+      {
+        id: "img_plumpy_mould_1",
+        url: "/shop/Plumpy Mould.png",
+        alt: "Plumpy Mould Rectangular Baking Cups",
+      },
+    ],
+    tableData: [
+      {
+        itemCode: "PBM-5025",
+        length: 158,
+        width: 54,
+        height: 50,
+      },
+      {
+        itemCode: "PBM-6530",
+        length: 198,
+        width: 72,
+        height: 60,
+      },
+    ],
+  },
+  {
+    id: 18,
+    name: "Rectangular paper cups",
+    slug: "rectangular-paper-cups",
+    category: "PAPER CUPS",
+    images: [
+      {
+        id: "img_rectangular_paper_cups_1",
+        url: "/shop/Rectangular paper cups.png",
+        alt: "Rectangular paper cups White Design",
+      },
+    ],
+    tableData: [
+      {
+        item: "65x23x24",
+        bottom: "65x23",
+        height: 24,
+        packing: 30000,
+      },
+      {
+        item: "70x30x25",
+        bottom: "70x30",
+        height: 25,
+        packing: 30000,
+      },
+      {
+        item: "85x35x25",
+        bottom: "85x35",
+        height: 25,
+        packing: 25000,
+      },
+      {
+        item: "104x40x24",
+        bottom: "104x40",
+        height: 24,
+        packing: 20000,
+      },
+    ],
+  },
+  {
+    id: 19,
+    name: "Round Plum Cake mould",
+    slug: "round-plum-cake-mould",
+    category: "MOULDS",
+    images: [
+      {
+        id: "img_round_plum_cake_mould_1",
+        url: "/shop/Round Plum Cake mould.png",
+        alt: "Round Plum Cake mould Brown Design",
+      },
+    ],
+    tableData: [
+      {
+        itemCode: "RPC-10030",
+        base: 100,
+        height: 30,
+        moq: 5000,
+      },
+      {
+        itemCode: "RPC-12035",
+        base: 120,
+        height: 35,
+        moq: 5000,
+      },
+      {
+        itemCode: "RPC-15535",
+        base: 155,
+        height: 35,
+        moq: 5000,
+      },
+      {
+        itemCode: "RPC-15555",
+        base: 155,
+        height: 55,
+        moq: 5000,
+      },
+      {
+        itemCode: "RPC-17055",
+        base: 170,
+        height: 55,
+        moq: 5000,
+      },
+    ],
+  },
+  {
+    id: 20,
+    name: "Royal Paper Cups",
+    slug: "royal-paper-cups",
+    category: "PAPER CUPS",
+    images: [
+      {
+        id: "img_royal_paper_cups_1",
+        url: "/shop/Royal Paper Cups.png",
+        alt: "Royal Paper Cups Display",
+      },
+    ],
+    tableData: [],
+    description:
+      "Serve your beverages in style with Royal Paper Cups – a premium quality disposable cup range from The Pack Hub. Crafted for both elegance and durability, these cups are perfect for hot and cold drinks alike. Whether you're hosting a party, running a café, or need an everyday solution for office refreshments, Royal Cups are designed to impress. Royal Cups are known for their smooth finish, clean print surface, and sturdy build. The elegant design gives a premium touch, making them ideal for cafes, corporate events, catering services, and takeaways. Custom branding options are also available – print your logo and brand message for better visibility and customer recall. Upgrade your beverage presentation with Royal Cups – the trusted choice for businesses that care about quality and sustainability.",
+    features: [
+      "Premium quality paper cups",
+      "Suitable for hot & cold beverages",
+      "Leak-proof & heat-resistant",
+      "100% biodegradable & eco-friendly",
+      "Available in multiple sizes",
+      "Custom branding options",
+      "Manufactured by The Pack Hub",
+    ],
+  },
+  {
+    id: 21,
+    name: "Wrapping Sheet",
+    slug: "wrapping-sheet",
+    category: "SHEET",
+    images: [
+      {
+        id: "img_wrapping_sheet_1",
+        url: "/shop/Wrapping Sheet.png",
+        alt: "Wrapping Sheet Golden Designs",
+      },
+    ],
+    tableData: [
+      {
+        wrappingSheet: "12x16",
+        paperSpecification: "40 to 70 gsm",
+      },
+      {
+        wrappingSheet: "14x18",
+        paperSpecification: "40 to 70 gsm",
+      },
+      {
+        wrappingSheet: "16x20",
+        paperSpecification: "40 to 70 gsm",
+      },
+      {
+        wrappingSheet: "20x24",
+        paperSpecification: "40 to 70 gsm",
+      },
+      {
+        wrappingSheet: "24x28",
+        paperSpecification: "40 to 70 gsm",
+      },
+      {
+        wrappingSheet: "32x36",
+        paperSpecification: "40 to 70 gsm",
+      },
+    ],
   },
 ];
