@@ -60,13 +60,13 @@ export default function NavbarComponent() {
 
   return (
     <header className="sticky top-0 z-50 bg-[#FFFFFF] backdrop-blur-md border-b border-sky-100 shadow-sm font-sans transition-all">
-      <div className="max-w-7xl mx-auto px-6 sm:px-8 lg:px-4">
-        <div className="flex items-center justify-between h-20">
+      <div className="max-w-7xl mx-auto px-6 sm:px-8 lg:px-0">
+        <div className="flex items-center justify-between h-20 md:h-25">
           {/* Left: Logo (Only Image, removed background, borders, and shadows) */}
           <div className="flex-shrink-0 flex items-center pl-2 sm:pl-4">
             <Link
               href="/"
-              className="relative block w-14 h-14 sm:w-18 sm:h-18 overflow-hidden transition-transform hover:scale-105"
+              className="relative block w-20 h-20 sm:w-24 sm:h-24 overflow-hidden transition-transform hover:scale-105"
             >
               <Image
                 src="/logo/logo.png"
@@ -80,11 +80,12 @@ export default function NavbarComponent() {
           </div>
 
           {/* Right Section: Navigation Links & Compact Search Bar on Desktop */}
-          <div className="hidden lg:flex items-center space-x-6 xl:space-x-8 pr-2 sm:pr-4">
+          <div className="ml-auto hidden lg:flex items-center space-x-6 xl:space-x-10 pr-2 sm:pr-0">
+            {" "}
             <nav className="flex items-center space-x-6 xl:space-x-8">
               <Link
                 href="/"
-                className={`font-bold tracking-wide text-sm uppercase transition-all relative py-2 ${
+                className={`font-bold tracking-wide text-sm md:text-[16px] uppercase transition-all relative py-2 ${
                   pathname === "/"
                     ? "text-sky-600"
                     : "text-slate-700 hover:text-sky-500"
@@ -98,7 +99,7 @@ export default function NavbarComponent() {
 
               <Link
                 href="/about"
-                className={`font-semibold tracking-wide text-sm uppercase transition-colors py-2 ${
+                className={`font-semibold tracking-wide text-sm md:text-[16px] uppercase transition-colors py-2 ${
                   pathname === "/about"
                     ? "text-sky-600"
                     : "text-slate-700 hover:text-sky-500"
@@ -115,7 +116,7 @@ export default function NavbarComponent() {
               >
                 <button
                   onClick={() => setShopOpen(!shopOpen)}
-                  className={`flex items-center space-x-1 font-semibold tracking-wide text-sm uppercase transition-colors py-2 focus:outline-none ${
+                  className={`flex items-center space-x-1 font-semibold tracking-wide text-sm md:text-[16px] uppercase transition-colors py-2 focus:outline-none ${
                     pathname.startsWith("/shop")
                       ? "text-sky-600"
                       : "text-slate-700 hover:text-sky-500"
@@ -145,7 +146,7 @@ export default function NavbarComponent() {
                         <Link
                           key={idx}
                           href={item.href}
-                          className="block px-4 py-2.5 text-sm text-slate-700 hover:bg-sky-50 hover:text-sky-600 font-medium transition-colors border-b border-sky-50 last:border-none"
+                          className="block px-4 py-2.5 text-sm md:text-lg text-slate-700 hover:bg-sky-50 hover:text-sky-600 font-medium transition-colors border-b border-sky-50 last:border-none"
                         >
                           {item.name}
                         </Link>
@@ -157,7 +158,7 @@ export default function NavbarComponent() {
 
               <Link
                 href="/career"
-                className={`font-semibold tracking-wide text-sm uppercase transition-colors py-2 ${
+                className={`font-semibold tracking-wide text-sm md:text-[16px] uppercase transition-colors py-2 ${
                   pathname === "/career"
                     ? "text-sky-600"
                     : "text-slate-700 hover:text-sky-500"
@@ -168,7 +169,7 @@ export default function NavbarComponent() {
 
               <Link
                 href="/contact"
-                className={`font-semibold tracking-wide text-sm uppercase transition-colors py-2 ${
+                className={`font-semibold tracking-wide text-sm md:text-[16px] uppercase transition-colors py-2 ${
                   pathname === "/contact"
                     ? "text-sky-600"
                     : "text-slate-700 hover:text-sky-500"
@@ -177,7 +178,6 @@ export default function NavbarComponent() {
                 Contact
               </Link>
             </nav>
-
             {/* Desktop Reduced Width Search Bar with Custom Placeholder */}
             <div className="relative" ref={searchRef}>
               <form
@@ -186,7 +186,7 @@ export default function NavbarComponent() {
               >
                 <div className="flex items-center pl-2.5 pr-1 flex-1">
                   <svg
-                    className="w-3.5 h-3.5 text-sky-500 mr-1.5 flex-shrink-0"
+                    className="w-3.5 h-3.5 md:w-5 md:h-5 text-sky-500 mr-1.5 flex-shrink-0"
                     fill="none"
                     viewBox="0 0 24 24"
                     stroke="currentColor"
@@ -328,11 +328,12 @@ export default function NavbarComponent() {
           <div className="w-11/12 max-w-sm bg-white h-[100dvh] shadow-2xl flex flex-col p-6 animate-in slide-in-from-right duration-300">
             {/* Drawer Header (Logo without background/borders) */}
             <div className="flex items-center justify-between pb-4 border-b border-sky-100 flex-shrink-0 mb-3">
-              <div className="relative w-14 h-14 overflow-hidden flex items-center justify-center">
+              <div className="relative w-22 h-22 overflow-hidden flex items-center justify-center">
                 <Image
                   src="/logo/logo.png"
                   alt="Brand Logo"
                   fill
+                  sizes="(max-width: 640px) 56px, 100px"
                   className="object-contain"
                 />
               </div>

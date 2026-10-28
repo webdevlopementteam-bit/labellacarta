@@ -1,9 +1,9 @@
 "use client";
 import React, { useEffect, useState } from "react";
 import Image from "next/image";
-import Link from "next/link";
 import { Swiper, SwiperSlide } from "swiper/react";
 import { Autoplay } from "swiper/modules";
+import { motion } from "framer-motion";
 
 // Import Swiper styles
 import "swiper/css";
@@ -27,11 +27,17 @@ export default function SolutionsAndFeaturedSection() {
   if (!mount) return null;
 
   return (
-    <section className="w-full bg-[#FBFBFC] py-14 md:py-20 px-4 sm:px-6 lg:px-8 select-none">
+    <section className="w-full bg-[#FBFBFC] py-14 md:py-20 px-4 sm:px-6 lg:px-8 select-none overflow-hidden">
       <div className="max-w-7xl mx-auto space-y-16 md:space-y-24">
         {/* --- SOLUTIONS AND SERVICES SECTION --- */}
         <div className="w-full space-y-8">
-          <div className="text-center max-w-2xl mx-auto space-y-3">
+          <motion.div
+            initial={{ opacity: 0, scale: 0.8, y: -10 }}
+            whileInView={{ opacity: 1, scale: 1, y: 0 }}
+            viewport={{ once: true, margin: "-50px" }}
+            transition={{ duration: 0.6, ease: "easeOut" }}
+            className="text-center max-w-2xl mx-auto space-y-3"
+          >
             <h2 className="text-2xl sm:text-3xl md:text-4xl font-[750] tracking-tight text-[#0092E4]">
               SOLUTIONS AND SERVICES
             </h2>
@@ -40,10 +46,16 @@ export default function SolutionsAndFeaturedSection() {
               solutions and services for the food industry, professionals in the
               confectionery sector and for large retailers.
             </p>
-          </div>
+          </motion.div>
 
           {/* Solutions Swiper */}
-          <div className="w-full pt-2 pb-8">
+          <motion.div
+            initial={{ opacity: 0, y: 30 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true, margin: "-50px" }}
+            transition={{ duration: 0.7, ease: "easeOut", delay: 0.2 }}
+            className="w-full pt-2 pb-8"
+          >
             <Swiper
               modules={[Autoplay]}
               loop={true}
@@ -80,22 +92,34 @@ export default function SolutionsAndFeaturedSection() {
                 </SwiperSlide>
               ))}
             </Swiper>
-          </div>
+          </motion.div>
         </div>
 
-        {/* --- FEATURED SECTION (Enhanced Card) --- */}
-        <div className="w-full bg-white rounded-3xl border border-gray-100/80 shadow-xl shadow-gray-100/60 p-8 sm:p-10 md:p-14 transition-all duration-300">
+        {/* --- FEATURED SECTION (Text outside, Only Image wrapped in a card) --- */}
+        <div className="w-full">
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 md:gap-12 items-center">
-            {/* Left Content */}
-            <div className="lg:col-span-7 space-y-6">
-              <div className="space-y-3">
+            {/* Left Content (Text without outer card wrapper) */}
+            <motion.div
+              initial={{ opacity: 0, x: -50 }}
+              whileInView={{ opacity: 1, x: 0 }}
+              viewport={{ once: true, margin: "-50px" }}
+              transition={{ duration: 0.7, ease: "easeOut" }}
+              className="lg:col-span-7 space-y-6"
+            >
+              <motion.div
+                initial={{ opacity: 0, scale: 0.8 }}
+                whileInView={{ opacity: 1, scale: 1 }}
+                viewport={{ once: true, margin: "-50px" }}
+                transition={{ duration: 0.6, ease: "easeOut" }}
+                className="space-y-3"
+              >
                 <h3 className="text-2xl sm:text-3xl font-bold tracking-tight text-[#0092E4]">
                   Featured
                 </h3>
-                <h4 className="text-3xl sm:text-4xl  font-bold text-[#0092E4] tracking-tight leading-tight">
+                <h4 className="text-3xl sm:text-4xl font-bold text-[#0092E4] tracking-tight leading-tight">
                   Baking Paper Cups
                 </h4>
-              </div>
+              </motion.div>
 
               <p className="text-base sm:text-lg text-gray-900 leading-relaxed font-normal">
                 Baking paper cups are a fantastic way to display and share
@@ -111,20 +135,28 @@ export default function SolutionsAndFeaturedSection() {
                 simply tear the paper wrapper at the seam. Note that baking cups
                 are not reusable and are made of paper.
               </p>
-            </div>
+            </motion.div>
 
-            {/* Right Image */}
-            <div className="lg:col-span-5">
-              <div className="relative w-full aspect-square flex items-center justify-center bg-[#FFFFFF] rounded-2xl p-6 overflow-hidden border border-gray-100 shadow-inner group">
-                <Image
-                  src="/home/f1.jpg"
-                  alt="Baking Paper Cups Featured"
-                  fill
-                  sizes="(max-width: 1024px) 100vw, 40vw"
-                  className="w-full h-full object-contain p-2 transition-transform duration-500 group-hover:scale-105"
-                />
+            {/* Right Image (Wrapped in its own card/box) */}
+            <motion.div
+              initial={{ opacity: 0, x: 50 }}
+              whileInView={{ opacity: 1, x: 0 }}
+              viewport={{ once: true, margin: "-50px" }}
+              transition={{ duration: 0.7, ease: "easeOut", delay: 0.2 }}
+              className="lg:col-span-5"
+            >
+              <div className="w-full bg-white rounded-3xl border border-gray-100/80 shadow-xl shadow-gray-100/60 p-6 md:p-8 transition-all duration-300">
+                <div className="relative w-full aspect-square flex items-center justify-center bg-[#FFFFFF] rounded-2xl p-6 overflow-hidden border border-gray-100 shadow-inner group">
+                  <Image
+                    src="/home/f1.jpg"
+                    alt="Baking Paper Cups Featured"
+                    fill
+                    sizes="(max-width: 1024px) 100vw, 40vw"
+                    className="w-full h-full object-contain p-2 transition-transform duration-500 group-hover:scale-105"
+                  />
+                </div>
               </div>
-            </div>
+            </motion.div>
           </div>
         </div>
       </div>
