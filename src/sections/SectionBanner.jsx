@@ -22,7 +22,7 @@ export default function SectionBanner() {
   if (!mount) return null;
 
   return (
-    <section className="relative w-full h-[35vh] sm:h-[45vh] lg:h-[80vh] overflow-hidden bg-[#EFEDE9] border-b border-sky-100 select-none">
+    <section className="relative w-full h-[21vh] sm:h-[40vh] lg:h-[80vh] overflow-hidden bg-[#EFEDE9] border-b border-sky-100 select-none">
       <Swiper
         modules={[Autoplay]}
         loop={true}

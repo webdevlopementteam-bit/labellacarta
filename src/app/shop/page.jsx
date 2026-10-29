@@ -1,6 +1,6 @@
 "use client";
 
-import { useMemo, useState } from "react";
+import { useState, useMemo, useEffect } from "react";
 import Image from "next/image";
 import Link from "next/link";
 import { useRouter } from "next/navigation";
@@ -33,6 +33,7 @@ export default function ShopPage() {
 
   const [currentPage, setCurrentPage] = useState(1);
   const [sortOrder, setSortOrder] = useState("default");
+  const [selectedCategory, setSelectedCategory] = useState("ALL");
   const [filtersOpen, setFiltersOpen] = useState(false);
 
   const categories = useMemo(() => {
@@ -40,11 +41,17 @@ export default function ShopPage() {
       getProductCategories(product.category),
     );
 
-    return [...new Set(allCategories)];
+    return ["ALL", ...new Set(allCategories)];
   }, []);
 
-  const sortedProducts = useMemo(() => {
-    const result = [...products];
+  const filteredProducts = useMemo(() => {
+    let result = [...products];
+
+    if (selectedCategory !== "ALL") {
+      result = result.filter((product) =>
+        getProductCategories(product.category).includes(selectedCategory),
+      );
+    }
 
     if (sortOrder === "name-a-z") {
       result.sort((a, b) => a.name.localeCompare(b.name));
@@ -53,22 +60,31 @@ export default function ShopPage() {
     }
 
     return result;
-  }, [sortOrder]);
+  }, [selectedCategory, sortOrder]);
 
-  const totalPages = Math.ceil(sortedProducts.length / ITEMS_PER_PAGE) || 1;
+  const totalPages = Math.ceil(filteredProducts.length / ITEMS_PER_PAGE) || 1;
+
+  useEffect(() => {
+    if (currentPage > totalPages) {
+      setCurrentPage(totalPages);
+    }
+  }, [currentPage, totalPages]);
 
   const paginatedProducts = useMemo(() => {
     const start = (currentPage - 1) * ITEMS_PER_PAGE;
-    return sortedProducts.slice(start, start + ITEMS_PER_PAGE);
-  }, [sortedProducts, currentPage]);
+    return filteredProducts.slice(start, start + ITEMS_PER_PAGE);
+  }, [filteredProducts, currentPage]);
 
   const startIndex =
-    sortedProducts.length > 0 ? (currentPage - 1) * ITEMS_PER_PAGE + 1 : 0;
+    filteredProducts.length > 0 ? (currentPage - 1) * ITEMS_PER_PAGE + 1 : 0;
 
   const endIndex = Math.min(
     currentPage * ITEMS_PER_PAGE,
-    sortedProducts.length,
+    filteredProducts.length,
   );
+
+  const selectedCategoryLabel =
+    selectedCategory === "ALL" ? "All categories" : selectedCategory;
 
   const sortLabel = {
     default: "Featured",
@@ -76,14 +92,9 @@ export default function ShopPage() {
     "name-z-a": "Name: Z to A",
   }[sortOrder];
 
-  function goToPage(page) {
-    setCurrentPage(page);
-    window.scrollTo({ top: 0, behavior: "smooth" });
-  }
-
   return (
     <main className="w-full overflow-hidden bg-[#f7fbfe] text-slate-900">
-      <Breadcrumb title="/shop" />
+      <Breadcrumb title="shop" />
 
       <section className="relative isolate px-4 pb-16 pt-8 sm:px-6 lg:px-8">
         <div className="pointer-events-none absolute inset-x-0 top-0 -z-10 h-80 bg-gradient-to-b from-[#0084D1]/[0.08] to-transparent" />
@@ -106,129 +117,147 @@ export default function ShopPage() {
           </div>
 
           {/* Product count and category/sort dropdown */}
-          <div className="mb-7 flex flex-col gap-4 rounded-2xl border border-[#0084D1]/10 bg-white p-4 shadow-[0_12px_35px_-25px_rgba(0,132,209,0.3)] sm:p-5 lg:flex-row lg:items-center lg:justify-between">
-            <div>
-              <p className="text-xs font-bold uppercase tracking-[0.16em] text-slate-400">
-                Products
-              </p>
+          <div className="mb-7 rounded-2xl border border-[#0084D1]/10 bg-white p-3 shadow-[0_12px_35px_-25px_rgba(0,132,209,0.3)] sm:p-5">
+            <div className="flex items-center justify-between gap-3">
+              {/* Product count */}
+              <div className="min-w-0">
+                <p className="text-[10px] font-bold uppercase tracking-[0.14em] text-slate-400 sm:text-xs sm:tracking-[0.16em]">
+                  Products
+                </p>
 
-              <p className="mt-1 text-sm font-semibold text-slate-700">
-                Showing{" "}
-                <span className="text-[#0084D1]">
-                  {startIndex}–{endIndex}
-                </span>{" "}
-                of{" "}
-                <span className="font-bold text-[#0084D1]">
-                  {sortedProducts.length}
-                </span>
-              </p>
-            </div>
-
-            <div className="relative w-full lg:w-72">
-              <button
-                type="button"
-                aria-expanded={filtersOpen}
-                aria-haspopup="true"
-                onClick={() => setFiltersOpen((open) => !open)}
-                className="flex w-full items-center justify-between gap-4 rounded-xl border border-slate-200 bg-white px-4 py-3 text-left shadow-sm transition hover:border-[#0084D1]/50 focus:outline-none focus:ring-2 focus:ring-[#0084D1]/15"
-              >
-                <span className="min-w-0">
-                  <span className="block text-[10px] font-bold uppercase tracking-[0.16em] text-slate-400">
-                    Category &amp; Sort by
+                <p className="mt-1 text-xs font-semibold text-slate-700 sm:text-sm">
+                  <span className="text-[#0084D1]">
+                    {startIndex}–{endIndex}
+                  </span>{" "}
+                  of{" "}
+                  <span className="font-bold text-[#0084D1]">
+                    {filteredProducts.length}
                   </span>
+                </p>
+              </div>
 
-                  <span className="mt-1 block truncate text-sm font-bold text-slate-800">
-                    Choose category
-                    <span className="px-1.5 text-slate-300">·</span>
-                    {sortLabel}
-                  </span>
-                </span>
-
-                <svg
-                  viewBox="0 0 20 20"
-                  fill="none"
-                  aria-hidden="true"
-                  className={`h-5 w-5 shrink-0 text-slate-500 transition-transform ${
-                    filtersOpen ? "rotate-180" : ""
-                  }`}
+              {/* Category/sort dropdown */}
+              <div className="relative shrink-0">
+                <button
+                  type="button"
+                  aria-expanded={filtersOpen}
+                  aria-haspopup="true"
+                  onClick={() => setFiltersOpen((open) => !open)}
+                  className="flex min-h-11 max-w-[190px] items-center gap-2 rounded-xl border border-slate-200 bg-white px-3 py-2 text-left shadow-sm transition hover:border-[#0084D1]/50 focus:outline-none focus:ring-2 focus:ring-[#0084D1]/15 sm:max-w-none sm:gap-4 sm:px-4 sm:py-3"
                 >
-                  <path
-                    d="m5 7.5 5 5 5-5"
-                    stroke="currentColor"
-                    strokeWidth="1.7"
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                  />
-                </svg>
-              </button>
+                  <span className="min-w-0">
+                    <span className="block text-[9px] font-bold uppercase tracking-[0.12em] text-slate-400 sm:text-[10px] sm:tracking-[0.16em]">
+                      Filter &amp; sort
+                    </span>
 
-              {filtersOpen && (
-                <>
-                  <button
-                    type="button"
-                    aria-label="Close filters"
-                    className="fixed inset-0 z-10 cursor-default"
-                    onClick={() => setFiltersOpen(false)}
-                  />
+                    <span className="mt-0.5 block truncate text-xs font-bold text-slate-800 sm:mt-1 sm:text-sm">
+                      {selectedCategoryLabel}
+                      <span className="px-1 text-slate-300">·</span>
+                      {sortLabel}
+                    </span>
+                  </span>
 
-                  <div className="absolute right-0 z-20 mt-2 w-full overflow-hidden rounded-2xl border border-slate-200 bg-white p-2 shadow-xl">
-                    <p className="px-3 pb-2 pt-2 text-center text-[10px] font-bold uppercase tracking-[0.16em] text-slate-400">
-                      Browse category
-                    </p>
+                  <svg
+                    viewBox="0 0 20 20"
+                    fill="none"
+                    aria-hidden="true"
+                    className={`h-4 w-4 shrink-0 text-slate-500 transition-transform sm:h-5 sm:w-5 ${
+                      filtersOpen ? "rotate-180" : ""
+                    }`}
+                  >
+                    <path
+                      d="m5 7.5 5 5 5-5"
+                      stroke="currentColor"
+                      strokeWidth="1.7"
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
+                    />
+                  </svg>
+                </button>
 
-                    <div className="max-h-52 overflow-y-auto">
-                      {categories.map((category) => (
-                        <button
-                          key={category}
-                          type="button"
-                          onClick={() => {
-                            setFiltersOpen(false);
-                            router.push(
-                              `/product-category/${createCategorySlug(category)}`,
-                            );
-                          }}
-                          className="w-full rounded-lg px-3 py-2.5 text-center text-sm font-semibold text-slate-700 transition hover:bg-[#0084D1]/[0.08] hover:text-[#0084D1]"
-                        >
-                          {category}
-                        </button>
-                      ))}
+                {filtersOpen && (
+                  <>
+                    <button
+                      type="button"
+                      aria-label="Close filters"
+                      className="fixed inset-0 z-10 cursor-default"
+                      onClick={() => setFiltersOpen(false)}
+                    />
+
+                    <div className="absolute right-0 z-20 mt-2 max-h-[65vh] w-[min(17rem,calc(100vw-1.5rem))] overflow-y-auto rounded-2xl border border-slate-200 bg-white p-2 text-left shadow-xl sm:w-72">
+                      <p className="px-3 pb-2 pt-2 text-[10px] font-bold uppercase tracking-[0.16em] text-slate-400">
+                        Category
+                      </p>
+
+                      <div className="max-h-44 overflow-y-auto">
+                        {categories.map((category) => {
+                          const isSelected = selectedCategory === category;
+
+                          return (
+                            <button
+                              key={category}
+                              type="button"
+                              onClick={() => {
+                                setFiltersOpen(false);
+
+                                if (category === "ALL") {
+                                  setSelectedCategory("ALL");
+                                  setCurrentPage(1);
+                                  return;
+                                }
+
+                                router.push(
+                                  `/product-category/${createCategorySlug(category)}`,
+                                );
+                              }}
+                              className={`w-full rounded-lg px-3 py-2.5 text-left text-sm font-semibold transition ${
+                                isSelected
+                                  ? "bg-[#0084D1]/[0.08] text-[#0084D1]"
+                                  : "text-slate-700 hover:bg-slate-50"
+                              }`}
+                            >
+                              {category === "ALL" ? "All categories" : category}
+                            </button>
+                          );
+                        })}
+                      </div>
+
+                      <div className="my-2 border-t border-slate-100" />
+
+                      <p className="px-3 pb-2 pt-1 text-[10px] font-bold uppercase tracking-[0.16em] text-slate-400">
+                        Sort by
+                      </p>
+
+                      {[
+                        { value: "default", label: "Featured" },
+                        { value: "name-a-z", label: "Name: A to Z" },
+                        { value: "name-z-a", label: "Name: Z to A" },
+                      ].map((option) => {
+                        const isSelected = sortOrder === option.value;
+
+                        return (
+                          <button
+                            key={option.value}
+                            type="button"
+                            onClick={() => {
+                              setSortOrder(option.value);
+                              setCurrentPage(1);
+                              setFiltersOpen(false);
+                            }}
+                            className={`w-full rounded-lg px-3 py-2.5 text-left text-sm font-semibold transition ${
+                              isSelected
+                                ? "bg-[#0084D1]/[0.08] text-[#0084D1]"
+                                : "text-slate-700 hover:bg-slate-50"
+                            }`}
+                          >
+                            {option.label}
+                          </button>
+                        );
+                      })}
                     </div>
-
-                    <div className="my-2 border-t border-slate-100" />
-
-                    <p className="px-3 pb-2 pt-1 text-center text-[10px] font-bold uppercase tracking-[0.16em] text-slate-400">
-                      Sort by
-                    </p>
-
-                    {[
-                      { value: "default", label: "Featured" },
-                      { value: "name-a-z", label: "Name: A to Z" },
-                      { value: "name-z-a", label: "Name: Z to A" },
-                    ].map((option) => {
-                      const isSelected = sortOrder === option.value;
-
-                      return (
-                        <button
-                          key={option.value}
-                          type="button"
-                          onClick={() => {
-                            setSortOrder(option.value);
-                            setCurrentPage(1);
-                            setFiltersOpen(false);
-                          }}
-                          className={`w-full rounded-lg px-3 py-2.5 text-center text-sm font-semibold transition ${
-                            isSelected
-                              ? "bg-[#0084D1]/[0.08] text-[#0084D1]"
-                              : "text-slate-700 hover:bg-slate-50"
-                          }`}
-                        >
-                          {option.label}
-                        </button>
-                      );
-                    })}
-                  </div>
-                </>
-              )}
+                  </>
+                )}
+              </div>
             </div>
           </div>
 
@@ -241,7 +270,7 @@ export default function ShopPage() {
 
                 return (
                   <article
-                    key={product.id ?? product.slug}
+                    key={product.id}
                     className="group flex flex-col overflow-hidden rounded-2xl border border-[#0084D1]/10 bg-white shadow-[0_12px_35px_-28px_rgba(15,67,110,0.35)] transition duration-300 hover:-translate-y-1 hover:border-[#0084D1]/25 hover:shadow-[0_22px_50px_-25px_rgba(0,132,209,0.3)]"
                   >
                     <Link
@@ -271,13 +300,12 @@ export default function ShopPage() {
                       {productCategories.length > 0 && (
                         <div className="mt-3 flex flex-wrap items-center gap-2">
                           {productCategories.map((category) => (
-                            <Link
+                            <div
                               key={category}
-                              href={`/product-category/${createCategorySlug(category)}`}
-                              className="rounded-full bg-[#0084D1]/[0.08] px-3 py-1.5 text-[10px] font-bold uppercase tracking-wide text-[#0084D1] transition hover:bg-[#0084D1] hover:text-white"
+                              className="rounded-full bg-[#0084D1]/[0.08] px-3 py-1.5 text-[10px] font-bold uppercase tracking-wide text-[#0084D1]"
                             >
                               {category}
-                            </Link>
+                            </div>
                           ))}
                         </div>
                       )}
@@ -315,24 +343,61 @@ export default function ShopPage() {
             </div>
           ) : (
             <div className="rounded-3xl border border-dashed border-[#0084D1]/25 bg-white px-6 py-20 text-center shadow-sm">
-              <h2 className="text-xl font-extrabold text-slate-900">
+              <span className="mx-auto flex h-14 w-14 items-center justify-center rounded-2xl bg-[#0084D1]/[0.08] text-[#0084D1]">
+                <svg
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  className="h-7 w-7"
+                  aria-hidden="true"
+                >
+                  <circle
+                    cx="10.8"
+                    cy="10.8"
+                    r="6.8"
+                    stroke="currentColor"
+                    strokeWidth="1.7"
+                  />
+                  <path
+                    d="m16 16 4.5 4.5M8 10.8h5.6"
+                    stroke="currentColor"
+                    strokeWidth="1.7"
+                    strokeLinecap="round"
+                  />
+                </svg>
+              </span>
+
+              <h2 className="mt-5 text-xl font-extrabold text-slate-900">
                 No products found
               </h2>
+
               <p className="mt-2 text-sm text-slate-500">
-                There are no products available right now.
+                There are no products in this category right now.
               </p>
+
+              <button
+                type="button"
+                onClick={() => {
+                  setSelectedCategory("ALL");
+                  setCurrentPage(1);
+                }}
+                className="mt-6 rounded-xl bg-[#0084D1] px-5 py-3 text-sm font-bold text-white shadow-md shadow-[#0084D1]/20 transition hover:bg-[#0073b8]"
+              >
+                Show all products
+              </button>
             </div>
           )}
 
-          {/* Pagination */}
-          {sortedProducts.length > ITEMS_PER_PAGE && (
+          {filteredProducts.length > ITEMS_PER_PAGE && (
             <nav
               className="mt-10 flex flex-wrap items-center justify-center gap-2"
               aria-label="Product pages"
             >
               <button
                 type="button"
-                onClick={() => goToPage(Math.max(1, currentPage - 1))}
+                onClick={() => {
+                  setCurrentPage((page) => Math.max(1, page - 1));
+                  window.scrollTo({ top: 0, behavior: "smooth" });
+                }}
                 disabled={currentPage === 1}
                 aria-label="Previous page"
                 className="flex h-10 items-center gap-2 rounded-xl border border-slate-200 bg-white px-4 text-xs font-bold text-slate-600 transition hover:border-[#0084D1] hover:text-[#0084D1] disabled:cursor-not-allowed disabled:opacity-40"
@@ -346,7 +411,10 @@ export default function ShopPage() {
                   <button
                     key={page}
                     type="button"
-                    onClick={() => goToPage(page)}
+                    onClick={() => {
+                      setCurrentPage(page);
+                      window.scrollTo({ top: 0, behavior: "smooth" });
+                    }}
                     aria-current={currentPage === page ? "page" : undefined}
                     aria-label={`Page ${page}`}
                     className={`h-10 min-w-10 rounded-xl border px-3 text-sm font-bold transition ${
@@ -362,7 +430,10 @@ export default function ShopPage() {
 
               <button
                 type="button"
-                onClick={() => goToPage(Math.min(totalPages, currentPage + 1))}
+                onClick={() => {
+                  setCurrentPage((page) => Math.min(totalPages, page + 1));
+                  window.scrollTo({ top: 0, behavior: "smooth" });
+                }}
                 disabled={currentPage === totalPages}
                 aria-label="Next page"
                 className="flex h-10 items-center gap-2 rounded-xl border border-slate-200 bg-white px-4 text-xs font-bold text-slate-600 transition hover:border-[#0084D1] hover:text-[#0084D1] disabled:cursor-not-allowed disabled:opacity-40"

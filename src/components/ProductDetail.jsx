@@ -32,6 +32,7 @@ function getCategories(category) {
   if (Array.isArray(category)) return category;
   return category ? [category] : [];
 }
+
 function createCategorySlug(category) {
   return category.toLowerCase().trim().replace(/\s+/g, "-");
 }
@@ -73,6 +74,8 @@ export default function ProductDetail({ product }) {
       return itemCategories.some((category) => categories.includes(category));
     })
     .slice(0, 4);
+
+  const contactHref = `/contact?product=${encodeURIComponent(product.name)}`;
 
   return (
     <main className="min-h-screen bg-white">
@@ -211,7 +214,7 @@ export default function ProductDetail({ product }) {
                     <Link
                       href={`/product-category/${createCategorySlug(category)}`}
                       key={`${category}-${index}`}
-                      className="rounded-full bg-sky-50 px-3 py-1.5 text-sm  font-bold text-[#0084D1] hover:text-blue-800 "
+                      className="rounded-full bg-sky-50 px-3 py-1.5 text-sm font-bold text-[#0084D1] hover:text-blue-800"
                     >
                       {category}
                     </Link>
@@ -219,6 +222,47 @@ export default function ProductDetail({ product }) {
                 </div>
               </div>
             )}
+
+            {/* Enquiry button */}
+            <div className="mt-7">
+              <Link
+                href={contactHref}
+                className="group inline-flex w-full items-center justify-center gap-3 rounded-xl bg-gradient-to-r from-[#0084D1] to-sky-600 px-6 py-4 text-sm font-bold text-white shadow-lg shadow-[#0084D1]/20 transition duration-300 hover:-translate-y-0.5 hover:from-sky-700 hover:to-[#0084D1] hover:shadow-xl hover:shadow-[#0084D1]/25 focus:outline-none focus:ring-2 focus:ring-[#0084D1] focus:ring-offset-2 sm:w-auto"
+              >
+                <svg
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  className="h-5 w-5 transition-transform group-hover:scale-110"
+                  aria-hidden="true"
+                >
+                  <path
+                    d="M4 6.75A2.75 2.75 0 0 1 6.75 4h10.5A2.75 2.75 0 0 1 20 6.75v10.5A2.75 2.75 0 0 1 17.25 20H6.75A2.75 2.75 0 0 1 4 17.25V6.75Z"
+                    stroke="currentColor"
+                    strokeWidth="1.7"
+                  />
+                  <path
+                    d="m5 6 7 6 7-6"
+                    stroke="currentColor"
+                    strokeWidth="1.7"
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                  />
+                </svg>
+
+                <span>Enquire Now</span>
+
+                <span
+                  aria-hidden="true"
+                  className="transition-transform group-hover:translate-x-1"
+                >
+                  →
+                </span>
+              </Link>
+
+              <p className="mt-2 text-xs text-slate-500">
+                Interested in this product? Send us an enquiry.
+              </p>
+            </div>
           </section>
         </div>
 
@@ -260,7 +304,6 @@ export default function ProductDetail({ product }) {
               <div className="grid grid-cols-1 gap-5 sm:grid-cols-2 xl:grid-cols-4">
                 {relatedProducts.map((item) => {
                   const image = item.images?.[0];
-                  const itemCategories = getCategories(item.category);
 
                   return (
                     <article
