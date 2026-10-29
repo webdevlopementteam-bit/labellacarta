@@ -1,11 +1,13 @@
 "use client";
-import React, { useState, useRef, useEffect } from "react";
+
+import React, { Suspense, useState, useRef, useEffect } from "react";
 import Image from "next/image";
 import Link from "next/link";
 import { usePathname, useRouter } from "next/navigation";
 import { products } from "@/lib/data";
+import { ArrowRight, Search } from "lucide-react";
 
-export default function NavbarComponent() {
+function NavbarContent() {
   const [shopOpen, setShopOpen] = useState(false);
   const [mobileShopOpen, setMobileShopOpen] = useState(false);
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
@@ -16,23 +18,33 @@ export default function NavbarComponent() {
   const pathname = usePathname();
 
   const shopItems = [
-    { name: "Box", href: "/shop/box" },
-    { name: "Cake", href: "/shop/cake" },
-    { name: "Envelop", href: "/shop/envelop" },
-    { name: "Food Wrapping", href: "/shop/food-wrapping" },
-    { name: "Moulds", href: "/shop/moulds" },
-    { name: "Paper Cups", href: "/shop/paper-cups" },
-    { name: "Sheet", href: "/shop/sheet" },
+    { name: "Box", href: "/product-category/box" },
+    { name: "Cake", href: "/product-category/cake" },
+    { name: "Envelop", href: "/product-category/envelop" },
+    { name: "Food Wrapping", href: "/product-category/food-wrapping" },
+    { name: "Moulds", href: "/product-category/moulds" },
+    { name: "Paper Cups", href: "/product-category/paper-cups" },
+    { name: "Sheet", href: "/product-category/sheet" },
   ];
 
+  const normalizedQuery = searchQuery.trim().toLowerCase();
+
   const filteredProducts =
-    searchQuery.trim() === ""
+    normalizedQuery === ""
       ? []
-      : products.filter(
-          (product) =>
-            product.name?.toLowerCase().includes(searchQuery.toLowerCase()) ||
-            product.category?.toLowerCase().includes(searchQuery.toLowerCase()),
-        );
+      : products.filter((product) => {
+          const nameMatches = product.name
+            ?.toLowerCase()
+            .includes(normalizedQuery);
+
+          const categoryMatches = Array.isArray(product.category)
+            ? product.category.some((category) =>
+                category?.toLowerCase().includes(normalizedQuery),
+              )
+            : product.category?.toLowerCase().includes(normalizedQuery);
+
+          return nameMatches || categoryMatches;
+        });
 
   useEffect(() => {
     function handleClickOutside(event) {
@@ -40,6 +52,7 @@ export default function NavbarComponent() {
         setSearchQuery("");
       }
     }
+
     document.addEventListener("mousedown", handleClickOutside);
     return () => document.removeEventListener("mousedown", handleClickOutside);
   }, []);
@@ -48,25 +61,25 @@ export default function NavbarComponent() {
     if (!slug) return;
     setSearchQuery("");
     setMobileMenuOpen(false);
-    router.push(`/shop/${slug}`);
+    router.push(`/products/${slug}`);
   };
 
-  const handleSearchSubmit = (e) => {
-    e.preventDefault();
+  const handleSearchSubmit = (event) => {
+    event.preventDefault();
     if (filteredProducts.length > 0) {
       handleSelectProduct(filteredProducts[0].slug);
     }
   };
 
   return (
-    <header className="sticky top-0 z-50 bg-[#FFFFFF] backdrop-blur-md border-b border-sky-100 shadow-sm font-sans transition-all">
-      <div className="max-w-7xl mx-auto px-6 sm:px-8 lg:px-0">
-        <div className="flex items-center justify-between h-20 md:h-25">
-          {/* Left: Logo (Only Image, removed background, borders, and shadows) */}
-          <div className="flex-shrink-0 flex items-center pl-2 sm:pl-4">
+    <header className="sticky top-0 z-50 border-b border-sky-100 bg-white font-sans shadow-sm backdrop-blur-md transition-all">
+      <div className="mx-auto max-w-7xl px-6 sm:px-8 lg:px-0">
+        <div className="flex h-20 items-center justify-between md:h-25">
+          {/* Logo */}
+          <div className="flex flex-shrink-0 items-center pl-2 sm:pl-4">
             <Link
               href="/"
-              className="relative block w-20 h-20 sm:w-24 sm:h-24 overflow-hidden transition-transform hover:scale-105"
+              className="relative block h-20 w-20 overflow-hidden transition-transform hover:scale-105 sm:h-24 sm:w-24"
             >
               <Image
                 src="/logo/logo.png"
@@ -79,13 +92,12 @@ export default function NavbarComponent() {
             </Link>
           </div>
 
-          {/* Right Section: Navigation Links & Compact Search Bar on Desktop */}
-          <div className="ml-auto hidden lg:flex items-center space-x-6 xl:space-x-10 pr-2 sm:pr-0">
-            {" "}
+          {/* Desktop navigation and search */}
+          <div className="ml-auto hidden items-center space-x-6 pr-2 lg:flex xl:space-x-10 sm:pr-0">
             <nav className="flex items-center space-x-6 xl:space-x-8">
               <Link
                 href="/"
-                className={`font-bold tracking-wide text-sm md:text-[16px] uppercase transition-all relative py-2 ${
+                className={`relative py-2 text-sm font-bold uppercase tracking-wide transition-all md:text-[16px] ${
                   pathname === "/"
                     ? "text-sky-600"
                     : "text-slate-700 hover:text-sky-500"
@@ -93,13 +105,13 @@ export default function NavbarComponent() {
               >
                 Home
                 {pathname === "/" && (
-                  <span className="absolute bottom-0 left-0 w-full h-[2.5px] bg-sky-500 rounded-full"></span>
+                  <span className="absolute bottom-0 left-0 h-[2.5px] w-full rounded-full bg-sky-500" />
                 )}
               </Link>
 
               <Link
                 href="/about"
-                className={`font-semibold tracking-wide text-sm md:text-[16px] uppercase transition-colors py-2 ${
+                className={`py-2 text-sm font-semibold uppercase tracking-wide transition-colors md:text-[16px] ${
                   pathname === "/about"
                     ? "text-sky-600"
                     : "text-slate-700 hover:text-sky-500"
@@ -108,23 +120,38 @@ export default function NavbarComponent() {
                 About
               </Link>
 
-              {/* SHOP Dropdown */}
+              {/* Shop dropdown. The wrapper and menu form one continuous hover area. */}
               <div
-                className="relative group"
+                className="relative flex items-center"
                 onMouseEnter={() => setShopOpen(true)}
                 onMouseLeave={() => setShopOpen(false)}
               >
-                <button
-                  onClick={() => setShopOpen(!shopOpen)}
-                  className={`flex items-center space-x-1 font-semibold tracking-wide text-sm md:text-[16px] uppercase transition-colors py-2 focus:outline-none ${
+                <Link
+                  href="/shop"
+                  className={`py-2 text-sm font-semibold uppercase tracking-wide transition-colors md:text-[16px] ${
                     pathname.startsWith("/shop")
                       ? "text-sky-600"
                       : "text-slate-700 hover:text-sky-500"
                   }`}
                 >
-                  <span>Shop</span>
+                  Shop
+                </Link>
+
+                <button
+                  type="button"
+                  onClick={() => setShopOpen((open) => !open)}
+                  className={`ml-1 flex items-center py-2 focus:outline-none ${
+                    pathname.startsWith("/shop")
+                      ? "text-sky-600"
+                      : "text-slate-700 hover:text-sky-500"
+                  }`}
+                  aria-label="Toggle Shop Dropdown"
+                  aria-expanded={shopOpen}
+                >
                   <svg
-                    className={`w-3.5 h-3.5 transition-transform duration-300 ${shopOpen ? "rotate-180 text-sky-500" : "text-slate-400"}`}
+                    className={`h-3.5 w-3.5 transition-transform duration-300 ${
+                      shopOpen ? "rotate-180 text-sky-500" : "text-slate-400"
+                    }`}
                     fill="none"
                     stroke="currentColor"
                     viewBox="0 0 24 24"
@@ -139,26 +166,24 @@ export default function NavbarComponent() {
                 </button>
 
                 {shopOpen && (
-                  <div className="absolute left-0 mt-1 w-52 bg-white rounded-xl shadow-xl py-2 border border-sky-100 transform origin-top-left animate-in fade-in slide-in-from-top-2 duration-200 z-50">
-                    {shopItems.map((item, idx) => {
-                      if (!item.href) return null;
-                      return (
-                        <Link
-                          key={idx}
-                          href={item.href}
-                          className="block px-4 py-2.5 text-sm md:text-lg text-slate-700 hover:bg-sky-50 hover:text-sky-600 font-medium transition-colors border-b border-sky-50 last:border-none"
-                        >
-                          {item.name}
-                        </Link>
-                      );
-                    })}
+                  <div className="absolute left-0 top-full z-50 w-52 rounded-xl border border-sky-100 bg-white py-2 shadow-xl">
+                    {shopItems.map((item) => (
+                      <Link
+                        key={item.href}
+                        href={item.href}
+                        onClick={() => setShopOpen(false)}
+                        className="block border-b border-sky-50 px-4 py-2.5 text-sm font-medium text-slate-700 transition-colors last:border-none hover:bg-sky-50 hover:text-sky-600 md:text-base"
+                      >
+                        {item.name}
+                      </Link>
+                    ))}
                   </div>
                 )}
               </div>
 
               <Link
                 href="/career"
-                className={`font-semibold tracking-wide text-sm md:text-[16px] uppercase transition-colors py-2 ${
+                className={`py-2 text-sm font-semibold uppercase tracking-wide transition-colors md:text-[16px] ${
                   pathname === "/career"
                     ? "text-sky-600"
                     : "text-slate-700 hover:text-sky-500"
@@ -169,7 +194,7 @@ export default function NavbarComponent() {
 
               <Link
                 href="/contact"
-                className={`font-semibold tracking-wide text-sm md:text-[16px] uppercase transition-colors py-2 ${
+                className={`py-2 text-sm font-semibold uppercase tracking-wide transition-colors md:text-[16px] ${
                   pathname === "/contact"
                     ? "text-sky-600"
                     : "text-slate-700 hover:text-sky-500"
@@ -178,107 +203,88 @@ export default function NavbarComponent() {
                 Contact
               </Link>
             </nav>
-            {/* Desktop Reduced Width Search Bar with Custom Placeholder */}
+
+            {/* Desktop search */}
             <div className="relative" ref={searchRef}>
               <form
                 onSubmit={handleSearchSubmit}
-                className="flex items-center bg-sky-50/60 border border-sky-200 hover:border-sky-400 p-1 rounded-full relative shadow-sm transition-all focus-within:ring-2 focus-within:ring-sky-300 focus-within:bg-white"
+                className="relative flex items-center rounded-full border border-sky-200 bg-sky-50/60 p-1 shadow-sm transition-all hover:border-sky-400 focus-within:bg-white focus-within:ring-2 focus-within:ring-sky-300"
               >
-                <div className="flex items-center pl-2.5 pr-1 flex-1">
-                  <svg
-                    className="w-3.5 h-3.5 md:w-5 md:h-5 text-sky-500 mr-1.5 flex-shrink-0"
-                    fill="none"
-                    viewBox="0 0 24 24"
-                    stroke="currentColor"
-                    strokeWidth="2.5"
-                  >
-                    <path
-                      strokeLinecap="round"
-                      strokeLinejoin="round"
-                      strokeLinejoin="round"
-                      d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"
-                    />
-                  </svg>
+                <div className="flex flex-1 items-center pl-2.5 pr-1">
+                  <Search className="mr-1.5 h-5 w-5 flex-shrink-0 text-sky-500" />
                   <input
                     type="text"
                     placeholder="Search product"
                     value={searchQuery}
-                    onChange={(e) => setSearchQuery(e.target.value)}
-                    className="bg-transparent text-slate-800 placeholder-slate-400 text-xs focus:outline-none w-28"
+                    onChange={(event) => setSearchQuery(event.target.value)}
+                    className="w-28 bg-transparent text-xs text-slate-800 placeholder-slate-400 focus:outline-none"
                   />
                 </div>
+
                 {searchQuery && (
                   <button
                     type="button"
                     onClick={() => setSearchQuery("")}
-                    className="text-slate-400 hover:text-slate-600 px-1 text-xs font-bold"
+                    className="px-1 text-xs font-bold text-slate-400 hover:text-slate-600"
                   >
                     ✕
                   </button>
                 )}
+
                 <button
                   type="submit"
-                  className="bg-sky-500 hover:bg-sky-600 text-white p-1.5 rounded-full transition-colors flex items-center justify-center shadow"
+                  className="flex items-center justify-center rounded-full bg-sky-500 p-1.5 text-white shadow transition-colors hover:bg-sky-600"
                   aria-label="Search"
                 >
-                  <svg
-                    className="w-3.5 h-3.5"
-                    fill="none"
-                    viewBox="0 0 24 24"
-                    stroke="currentColor"
-                    strokeWidth="2.5"
-                  >
-                    <path
-                      strokeLinecap="round"
-                      strokeLinejoin="round"
-                      strokeLinejoin="round"
-                      d="M14 5l7 7m0 0l-7 7m7-7H3"
-                    />
-                  </svg>
+                  <ArrowRight className="h-3.5 w-3.5" />
                 </button>
 
-                {/* Live Search Results Dropdown */}
                 {searchQuery.trim() !== "" && (
-                  <div className="absolute right-0 top-12 w-72 bg-white rounded-2xl shadow-2xl border border-sky-100 max-h-96 overflow-y-auto z-50 p-2 animate-in fade-in duration-200">
+                  <div className="absolute right-0 top-12 z-50 max-h-96 w-72 overflow-y-auto rounded-2xl border border-sky-100 bg-white p-2 shadow-2xl">
                     {filteredProducts.length > 0 ? (
                       filteredProducts.map((product) => (
-                        <div
-                          key={product.id}
+                        <button
+                          key={product.id ?? product.slug}
+                          type="button"
                           onClick={() => handleSelectProduct(product.slug)}
-                          className="flex items-center space-x-3 p-2.5 hover:bg-sky-50/70 rounded-xl cursor-pointer transition-all border-b border-sky-50 last:border-none group"
+                          className="group flex w-full cursor-pointer items-center space-x-3 rounded-xl border-b border-sky-50 p-2.5 text-left transition-all last:border-none hover:bg-sky-50/70"
                         >
-                          <div className="relative w-10 h-10 flex-shrink-0 bg-slate-100 rounded-lg overflow-hidden border border-sky-100 shadow-inner">
+                          <span className="relative h-10 w-10 flex-shrink-0 overflow-hidden rounded-lg border border-sky-100 bg-slate-100 shadow-inner">
                             <Image
                               src={
                                 product.images?.[0]?.url || "/placeholder.png"
                               }
                               alt={product.images?.[0]?.alt || product.name}
                               fill
-                              className="object-cover group-hover:scale-105 transition-transform"
+                              className="object-cover transition-transform group-hover:scale-105"
                             />
-                          </div>
-                          <div className="flex-1 min-w-0">
-                            <p className="text-xs font-bold text-slate-800 truncate group-hover:text-sky-600 transition-colors">
+                          </span>
+
+                          <span className="min-w-0 flex-1">
+                            <span className="block truncate text-xs font-bold text-slate-800 transition-colors group-hover:text-sky-600">
                               {product.name}
-                            </p>
-                            <p className="text-[10px] text-sky-600 font-semibold uppercase tracking-wider">
-                              {product.category}
-                            </p>
-                          </div>
-                          <span className="text-slate-400 group-hover:text-sky-500 text-xs font-bold">
+                            </span>
+                            <span className="text-[10px] font-semibold uppercase tracking-wider text-sky-600">
+                              {Array.isArray(product.category)
+                                ? product.category.join(", ")
+                                : product.category}
+                            </span>
+                          </span>
+
+                          <span className="text-xs font-bold text-slate-400 group-hover:text-sky-500">
                             ↗
                           </span>
-                        </div>
+                        </button>
                       ))
                     ) : (
                       <div className="p-4 text-center">
-                        <div className="w-8 h-8 bg-sky-50 rounded-full flex items-center justify-center mx-auto mb-1 text-sky-500 text-xs">
+                        <div className="mx-auto mb-1 flex h-8 w-8 items-center justify-center rounded-full bg-sky-50 text-xs text-sky-500">
                           🔍
                         </div>
                         <p className="text-xs font-bold text-slate-700">
                           No results found
                         </p>
-                        <p className="text-[10px] text-slate-400 mt-0.5">
+                        <p className="mt-0.5 text-[10px] text-slate-400">
                           No match for &quot;{searchQuery}&quot;
                         </p>
                       </div>
@@ -289,12 +295,14 @@ export default function NavbarComponent() {
             </div>
           </div>
 
-          {/* Mobile Hamburger Button */}
-          <div className="lg:hidden flex items-center pr-2">
+          {/* Mobile hamburger */}
+          <div className="flex items-center pr-2 lg:hidden">
             <button
+              type="button"
               onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
-              className="p-3 rounded-2xl bg-sky-50 text-slate-700 hover:text-sky-600 hover:bg-sky-100 focus:outline-none transition-all shadow-sm"
+              className="rounded-2xl bg-sky-50 p-3 text-slate-700 shadow-sm transition-all hover:bg-sky-100 hover:text-sky-600 focus:outline-none"
               aria-label="Toggle Menu"
+              aria-expanded={mobileMenuOpen}
             >
               <svg
                 className="h-7 w-7"
@@ -322,13 +330,13 @@ export default function NavbarComponent() {
         </div>
       </div>
 
-      {/* Mobile Drawer */}
+      {/* Mobile drawer */}
       {mobileMenuOpen && (
-        <div className="lg:hidden fixed inset-0 z-50 bg-black/40 backdrop-blur-sm flex justify-end">
-          <div className="w-11/12 max-w-sm bg-white h-[100dvh] shadow-2xl flex flex-col p-6 animate-in slide-in-from-right duration-300">
-            {/* Drawer Header (Logo without background/borders) */}
-            <div className="flex items-center justify-between pb-4 border-b border-sky-100 flex-shrink-0 mb-3">
-              <div className="relative w-22 h-22 overflow-hidden flex items-center justify-center">
+        <div className="fixed inset-0 z-50 flex justify-end bg-black/40 backdrop-blur-sm lg:hidden">
+          <div className="flex h-[100dvh] w-11/12 max-w-sm flex-col bg-white p-6 shadow-2xl">
+            {/* Drawer header */}
+            <div className="mb-3 flex flex-shrink-0 items-center justify-between border-b border-sky-100 pb-4">
+              <div className="relative flex h-22 w-22 items-center justify-center overflow-hidden">
                 <Image
                   src="/logo/logo.png"
                   alt="Brand Logo"
@@ -337,13 +345,15 @@ export default function NavbarComponent() {
                   className="object-contain"
                 />
               </div>
+
               <button
+                type="button"
                 onClick={() => setMobileMenuOpen(false)}
-                className="w-11 h-11 rounded-full bg-sky-500 text-white flex items-center justify-center hover:bg-sky-600 transition-colors shadow-md"
+                className="flex h-11 w-11 items-center justify-center rounded-full bg-sky-500 text-white shadow-md transition-colors hover:bg-sky-600"
                 aria-label="Close Menu"
               >
                 <svg
-                  className="w-6 h-6"
+                  className="h-6 w-6"
                   fill="none"
                   viewBox="0 0 24 24"
                   stroke="currentColor"
@@ -358,12 +368,12 @@ export default function NavbarComponent() {
               </button>
             </div>
 
-            {/* Mobile Nav Links */}
-            <div className="flex-1 overflow-y-auto space-y-2.5 py-2 pr-1">
+            {/* Mobile navigation */}
+            <div className="flex-1 space-y-2.5 overflow-y-auto py-2 pr-1">
               <Link
                 href="/"
                 onClick={() => setMobileMenuOpen(false)}
-                className={`flex items-center justify-between px-4 py-4 rounded-2xl text-sm font-bold uppercase tracking-wider transition-all ${
+                className={`flex items-center justify-between rounded-2xl px-4 py-4 text-sm font-bold uppercase tracking-wider transition-all ${
                   pathname === "/"
                     ? "bg-sky-50 text-sky-600 shadow-sm"
                     : "text-slate-800 hover:bg-sky-50/50"
@@ -371,7 +381,11 @@ export default function NavbarComponent() {
               >
                 <span>Home</span>
                 <span
-                  className={`w-8 h-8 rounded-full flex items-center justify-center text-xs font-bold ${pathname === "/" ? "bg-sky-500 text-white" : "bg-sky-50 text-sky-600"}`}
+                  className={`flex h-8 w-8 items-center justify-center rounded-full text-xs font-bold ${
+                    pathname === "/"
+                      ? "bg-sky-500 text-white"
+                      : "bg-sky-50 text-sky-600"
+                  }`}
                 >
                   ↗
                 </span>
@@ -380,7 +394,7 @@ export default function NavbarComponent() {
               <Link
                 href="/about"
                 onClick={() => setMobileMenuOpen(false)}
-                className={`flex items-center justify-between px-4 py-4 rounded-2xl text-sm font-semibold uppercase tracking-wider transition-all ${
+                className={`flex items-center justify-between rounded-2xl px-4 py-4 text-sm font-semibold uppercase tracking-wider transition-all ${
                   pathname === "/about"
                     ? "bg-sky-50 text-sky-600 shadow-sm"
                     : "text-slate-800 hover:bg-sky-50/50"
@@ -388,60 +402,79 @@ export default function NavbarComponent() {
               >
                 <span>About Us</span>
                 <span
-                  className={`w-8 h-8 rounded-full flex items-center justify-center text-xs font-bold ${pathname === "/about" ? "bg-sky-500 text-white" : "bg-sky-50 text-sky-600"}`}
+                  className={`flex h-8 w-8 items-center justify-center rounded-full text-xs font-bold ${
+                    pathname === "/about"
+                      ? "bg-sky-500 text-white"
+                      : "bg-sky-50 text-sky-600"
+                  }`}
                 >
                   ↗
                 </span>
               </Link>
 
-              {/* Shop Collapsible Dropdown in Mobile */}
+              {/* Mobile shop dropdown */}
               <div className="space-y-1">
                 <div
-                  onClick={() => setMobileShopOpen(!mobileShopOpen)}
-                  className={`flex items-center justify-between px-4 py-4 rounded-2xl text-sm font-semibold uppercase tracking-wider cursor-pointer transition-all ${
+                  className={`flex items-center justify-between rounded-2xl px-4 py-4 text-sm font-semibold uppercase tracking-wider transition-all ${
                     pathname.startsWith("/shop")
                       ? "bg-sky-50 text-sky-600 shadow-sm"
                       : "text-slate-800 hover:bg-sky-50/50"
                   }`}
                 >
-                  <span>Shop Categories</span>
-                  <svg
-                    className={`w-4 h-4 transition-transform duration-300 ${mobileShopOpen ? "rotate-180 text-sky-500" : "text-slate-400"}`}
-                    fill="none"
-                    stroke="currentColor"
-                    viewBox="0 0 24 24"
-                    strokeWidth="2.5"
+                  <Link
+                    href="/shop"
+                    onClick={() => setMobileMenuOpen(false)}
+                    className="flex-1"
                   >
-                    <path
-                      strokeLinecap="round"
-                      strokeLinejoin="round"
-                      d="M19 9l-7 7-7-7"
-                    />
-                  </svg>
+                    <span>Shop</span>
+                  </Link>
+
+                  <button
+                    type="button"
+                    onClick={() => setMobileShopOpen(!mobileShopOpen)}
+                    className="p-1 focus:outline-none"
+                    aria-label="Toggle Mobile Shop Menu"
+                    aria-expanded={mobileShopOpen}
+                  >
+                    <svg
+                      className={`h-4 w-4 transition-transform duration-300 ${
+                        mobileShopOpen
+                          ? "rotate-180 text-sky-500"
+                          : "text-slate-400"
+                      }`}
+                      fill="none"
+                      stroke="currentColor"
+                      viewBox="0 0 24 24"
+                      strokeWidth="2.5"
+                    >
+                      <path
+                        strokeLinecap="round"
+                        strokeLinejoin="round"
+                        d="M19 9l-7 7-7-7"
+                      />
+                    </svg>
+                  </button>
                 </div>
 
                 {mobileShopOpen && (
-                  <div className="pl-3 space-y-1.5 pt-1 animate-in fade-in duration-200">
-                    {shopItems.map((item, index) => {
-                      if (!item.href) return null;
-                      return (
-                        <Link
-                          key={index}
-                          href={item.href}
-                          onClick={() => setMobileMenuOpen(false)}
-                          className={`flex items-center justify-between pl-6 pr-4 py-3 rounded-xl text-sm font-medium transition-colors ${
-                            pathname === item.href
-                              ? "bg-sky-50 text-sky-600 font-bold"
-                              : "text-slate-600 hover:bg-sky-50 hover:text-sky-600"
-                          }`}
-                        >
-                          <span>{item.name}</span>
-                          <span className="text-xs text-slate-400 font-bold">
-                            ↗
-                          </span>
-                        </Link>
-                      );
-                    })}
+                  <div className="space-y-1.5 pl-3 pt-1">
+                    {shopItems.map((item) => (
+                      <Link
+                        key={item.href}
+                        href={item.href}
+                        onClick={() => setMobileMenuOpen(false)}
+                        className={`flex items-center justify-between rounded-xl py-3 pl-6 pr-4 text-sm font-medium transition-colors ${
+                          pathname === item.href
+                            ? "bg-sky-50 font-bold text-sky-600"
+                            : "text-slate-600 hover:bg-sky-50 hover:text-sky-600"
+                        }`}
+                      >
+                        <span>{item.name}</span>
+                        <span className="text-xs font-bold text-slate-400">
+                          ↗
+                        </span>
+                      </Link>
+                    ))}
                   </div>
                 )}
               </div>
@@ -449,16 +482,14 @@ export default function NavbarComponent() {
               <Link
                 href="/career"
                 onClick={() => setMobileMenuOpen(false)}
-                className={`flex items-center justify-between px-4 py-4 rounded-2xl text-sm font-semibold uppercase tracking-wider transition-all ${
+                className={`flex items-center justify-between rounded-2xl px-4 py-4 text-sm font-semibold uppercase tracking-wider transition-all ${
                   pathname === "/career"
                     ? "bg-sky-50 text-sky-600 shadow-sm"
                     : "text-slate-800 hover:bg-sky-50/50"
                 }`}
               >
                 <span>Career</span>
-                <span
-                  className={`w-8 h-8 rounded-full flex items-center justify-center text-xs font-bold ${pathname === "/career" ? "bg-sky-500 text-white" : "bg-sky-50 text-sky-600"}`}
-                >
+                <span className="flex h-8 w-8 items-center justify-center rounded-full bg-sky-50 text-xs font-bold text-sky-600">
                   ↗
                 </span>
               </Link>
@@ -466,60 +497,62 @@ export default function NavbarComponent() {
               <Link
                 href="/contact"
                 onClick={() => setMobileMenuOpen(false)}
-                className={`flex items-center justify-between px-4 py-4 rounded-2xl text-sm font-semibold uppercase tracking-wider transition-all ${
+                className={`flex items-center justify-between rounded-2xl px-4 py-4 text-sm font-semibold uppercase tracking-wider transition-all ${
                   pathname === "/contact"
                     ? "bg-sky-50 text-sky-600 shadow-sm"
                     : "text-slate-800 hover:bg-sky-50/50"
                 }`}
               >
                 <span>Contact Us</span>
-                <span
-                  className={`w-8 h-8 rounded-full flex items-center justify-center text-xs font-bold ${pathname === "/contact" ? "bg-sky-500 text-white" : "bg-sky-50 text-sky-600"}`}
-                >
+                <span className="flex h-8 w-8 items-center justify-center rounded-full bg-sky-50 text-xs font-bold text-sky-600">
                   ↗
                 </span>
               </Link>
             </div>
 
-            {/* Mobile Search Bar at the Bottom */}
-            <div className="pt-3 border-t border-sky-100 flex-shrink-0 relative">
-              {/* Mobile Live Results Dropdown */}
+            {/* Mobile search */}
+            <div className="relative flex-shrink-0 border-t border-sky-100 pt-3">
               {searchQuery.trim() !== "" && (
-                <div className="absolute left-0 bottom-full mb-2 w-full bg-white rounded-2xl shadow-2xl border border-sky-100 max-h-60 overflow-y-auto z-50 p-2 animate-in fade-in duration-200">
+                <div className="absolute bottom-full left-0 z-50 mb-2 max-h-60 w-full overflow-y-auto rounded-2xl border border-sky-100 bg-white p-2 shadow-2xl">
                   {filteredProducts.length > 0 ? (
                     filteredProducts.map((product) => (
-                      <div
-                        key={product.id}
+                      <button
+                        key={product.id ?? product.slug}
+                        type="button"
                         onClick={() => handleSelectProduct(product.slug)}
-                        className="flex items-center space-x-3 p-3 hover:bg-sky-50 rounded-xl cursor-pointer transition-colors border-b border-sky-50 last:border-none group"
+                        className="group flex w-full items-center space-x-3 rounded-xl border-b border-sky-50 p-3 text-left transition-colors last:border-none hover:bg-sky-50"
                       >
-                        <div className="relative w-10 h-10 flex-shrink-0 bg-slate-100 rounded-lg overflow-hidden border border-sky-100">
+                        <span className="relative h-10 w-10 flex-shrink-0 overflow-hidden rounded-lg border border-sky-100 bg-slate-100">
                           <Image
                             src={product.images?.[0]?.url || "/placeholder.png"}
                             alt={product.images?.[0]?.alt || product.name}
                             fill
                             className="object-cover"
                           />
-                        </div>
-                        <div className="flex-1 min-w-0">
-                          <p className="text-xs font-bold text-slate-800 truncate group-hover:text-sky-600">
+                        </span>
+
+                        <span className="min-w-0 flex-1">
+                          <span className="block truncate text-xs font-bold text-slate-800 group-hover:text-sky-600">
                             {product.name}
-                          </p>
-                          <p className="text-[10px] text-sky-600 font-semibold uppercase tracking-wider">
-                            {product.category}
-                          </p>
-                        </div>
-                        <span className="text-slate-400 group-hover:text-sky-500 text-xs font-bold">
+                          </span>
+                          <span className="text-[10px] font-semibold uppercase tracking-wider text-sky-600">
+                            {Array.isArray(product.category)
+                              ? product.category.join(", ")
+                              : product.category}
+                          </span>
+                        </span>
+
+                        <span className="text-xs font-bold text-slate-400 group-hover:text-sky-500">
                           ↗
                         </span>
-                      </div>
+                      </button>
                     ))
                   ) : (
                     <div className="p-4 text-center">
                       <p className="text-xs font-bold text-slate-700">
                         No products found
                       </p>
-                      <p className="text-[10px] text-slate-400 mt-0.5">
+                      <p className="mt-0.5 text-[10px] text-slate-400">
                         Try searching something else
                       </p>
                     </div>
@@ -529,11 +562,11 @@ export default function NavbarComponent() {
 
               <form
                 onSubmit={handleSearchSubmit}
-                className="flex items-center bg-sky-50/60 border border-sky-200 p-2.5 rounded-2xl relative shadow-inner focus-within:border-sky-400 focus-within:bg-white transition-all"
+                className="relative flex items-center rounded-2xl border border-sky-200 bg-sky-50/60 p-2.5 shadow-inner transition-all focus-within:border-sky-400 focus-within:bg-white"
               >
-                <div className="flex items-center pl-2 pr-2 flex-1">
+                <div className="flex flex-1 items-center pl-2 pr-2">
                   <svg
-                    className="w-4 h-4 text-sky-500 mr-2 flex-shrink-0"
+                    className="mr-2 h-4 w-4 flex-shrink-0 text-sky-500"
                     fill="none"
                     viewBox="0 0 24 24"
                     stroke="currentColor"
@@ -545,31 +578,33 @@ export default function NavbarComponent() {
                       d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"
                     />
                   </svg>
+
                   <input
                     type="text"
                     placeholder="Search product"
                     value={searchQuery}
-                    onChange={(e) => setSearchQuery(e.target.value)}
-                    className="bg-transparent text-slate-800 placeholder-slate-400 text-sm focus:outline-none w-full"
+                    onChange={(event) => setSearchQuery(event.target.value)}
+                    className="w-full bg-transparent text-sm text-slate-800 placeholder-slate-400 focus:outline-none"
                   />
                 </div>
+
                 {searchQuery && (
                   <button
                     type="button"
                     onClick={() => setSearchQuery("")}
-                    className="text-slate-400 hover:text-slate-600 px-2 text-xs font-bold"
+                    className="px-2 text-xs font-bold text-slate-400 hover:text-slate-600"
                   >
                     ✕
                   </button>
                 )}
+
                 <button
-                  box-sizing="border-box"
                   type="submit"
-                  className="bg-sky-500 hover:bg-sky-600 text-white p-2.5 rounded-xl transition-colors flex items-center justify-center shadow"
+                  className="flex items-center justify-center rounded-xl bg-sky-500 p-2.5 text-white shadow transition-colors hover:bg-sky-600"
                   aria-label="Search"
                 >
                   <svg
-                    className="w-4 h-4"
+                    className="h-4 w-4"
                     fill="none"
                     viewBox="0 0 24 24"
                     stroke="currentColor"
@@ -578,7 +613,7 @@ export default function NavbarComponent() {
                     <path
                       strokeLinecap="round"
                       strokeLinejoin="round"
-                      d="M14 5l7 7m0 0l-7 7m7-7H3"
+                      d="M14 5l7 7m0 0-7 7m7-7H3"
                     />
                   </svg>
                 </button>
@@ -588,5 +623,17 @@ export default function NavbarComponent() {
         </div>
       )}
     </header>
+  );
+}
+
+export default function NavbarComponent() {
+  return (
+    <Suspense
+      fallback={
+        <header className="h-20 border-b border-sky-100 bg-white md:h-25" />
+      }
+    >
+      <NavbarContent />
+    </Suspense>
   );
 }

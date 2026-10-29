@@ -7,13 +7,13 @@ import { motion } from "framer-motion";
 import { Phone, Mail, MapPin, ChevronsRight } from "lucide-react";
 
 const shopItems = [
-  { name: "Box", href: "/shop/box" },
-  { name: "Cake", href: "/shop/cake" },
-  { name: "Envelop", href: "/shop/envelop" },
-  { name: "Food Wrapping", href: "/shop/food-wrapping" },
-  { name: "Moulds", href: "/shop/moulds" },
-  { name: "Paper Cups", href: "/shop/paper-cups" },
-  { name: "Sheet", href: "/shop/sheet" },
+  { name: "Box", href: "/product-category/box" },
+  { name: "Cake", href: "/product-category/cake" },
+  { name: "Envelop", href: "/product-category/envelop" },
+  { name: "Food Wrapping", href: "/product-category/food-wrapping" },
+  { name: "Moulds", href: "/product-category/moulds" },
+  { name: "Paper Cups", href: "/product-category/paper-cups" },
+  { name: "Sheet", href: "/product-category/sheet" },
 ];
 
 const navLinks = [

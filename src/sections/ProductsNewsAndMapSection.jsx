@@ -11,14 +11,14 @@ export default function ProductsNewsAndMapSection() {
         {/* Background dark overlay */}
         <div className="absolute inset-0 bg-black/50" />
 
-        <div className="relative z-10 w-full max-w-[1400px] mx-auto grid grid-cols-1 lg:grid-cols-12 gap-8 items-center">
-          {/* Left Side: Front Image - Moves Left */}
+        <div className="relative z-10 w-full max-w-[1400px] mx-auto grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-16 items-center justify-between">
+          {/* Left Side: Front Image */}
           <motion.div
             initial={{ opacity: 0, x: -60 }}
             whileInView={{ opacity: 1, x: 0 }}
             viewport={{ once: true, margin: "-100px" }}
             transition={{ duration: 0.8, ease: [0.25, 1, 0.5, 1] }}
-            className="lg:col-span-6 flex justify-center"
+            className="lg:col-span-5 flex justify-center"
           >
             <div className="bg-white p-3 rounded-2xl shadow-xl w-full max-w-xl">
               <div className="relative w-full h-[300px] sm:h-[350px] md:h-[450px]">
@@ -34,13 +34,13 @@ export default function ProductsNewsAndMapSection() {
             </div>
           </motion.div>
 
-          {/* Right Side: Text List - Moves Right */}
+          {/* Right Side: Text List */}
           <motion.div
             initial={{ opacity: 0, x: 60 }}
             whileInView={{ opacity: 1, x: 0 }}
             viewport={{ once: true, margin: "-100px" }}
             transition={{ duration: 0.8, ease: [0.25, 1, 0.5, 1], delay: 0.2 }}
-            className="lg:col-span-6 text-white px-2 lg:px-4"
+            className="lg:col-span-6 lg:col-start-7 text-white px-2 lg:px-4"
           >
             <h2 className="text-2xl lg:text-3xl font-bold mb-4 text-white tracking-wide text-center lg:text-left">
               Our Products List

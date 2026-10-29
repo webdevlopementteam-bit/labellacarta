@@ -3,7 +3,7 @@ export const products = [
     id: 1,
     name: "BAKING PAPER CUPS",
     slug: "baking-paper-cups",
-    category: "PAPER CUPS",
+    category: ["PAPER CUPS"],
     images: [
       {
         id: "img_cups_1",
@@ -17,7 +17,7 @@ export const products = [
     id: 2,
     name: "Brownie Mould",
     slug: "brownie-mould",
-    category: "MOULDS", // Yahan images array format mein hoti hain (agar future mein multiple images add karni hon)
+    category: ["MOULDS"], // Yahan images array format mein hoti hain (agar future mein multiple images add karni hon)
     images: [
       {
         id: "img_brownie_1",
@@ -44,7 +44,7 @@ export const products = [
     id: 3,
     name: "Burger Paper",
     slug: "burger-paper",
-    category: "FOOD WRAPPING",
+    category: ["FOOD WRAPPING"],
     images: [
       {
         id: "img_burger_1",
@@ -89,7 +89,7 @@ export const products = [
     id: 4,
     name: "Butter Paper",
     slug: "butter-paper",
-    category: "SHEET",
+    category: ["SHEET"],
     images: [
       {
         id: "img_butter_1",
@@ -122,7 +122,7 @@ export const products = [
     id: 5,
     name: "Cake Base Board",
     slug: "cake-base-board",
-    category: "CAKE",
+    category: ["CAKE"],
     images: [
       {
         id: "img_cake_base_1",
@@ -162,7 +162,7 @@ export const products = [
     id: 6,
     name: "Cake Box",
     slug: "cake-box",
-    category: "BOX, CAKE",
+    category: ["BOX", "CAKE"],
     images: [
       {
         id: "img_cake_box_1",
@@ -218,7 +218,7 @@ export const products = [
     id: 7,
     name: "Cup Cake Liner",
     slug: "cup-cake-liner",
-    category: "CAKE, PAPER CUPS",
+    category: ["CAKE", "PAPER CUPS"],
     images: [
       {
         id: "img_cup_cake_liner_1",
@@ -241,7 +241,7 @@ export const products = [
     id: 8,
     name: "Curl Cup Mould",
     slug: "curl-cup-mould",
-    category: "MOULDS",
+    category: ["MOULDS"],
     images: [
       {
         id: "img_curl_cup_mould_1",
@@ -280,7 +280,7 @@ export const products = [
     id: 9,
     name: "Food Wrapping Envelop",
     slug: "food-wrapping-envelop",
-    category: "ENVELOP",
+    category: ["ENVELOP"],
     images: [
       {
         id: "img_food_wrapping_envelop_1",
@@ -325,7 +325,7 @@ export const products = [
     id: 10,
     name: "Food Wrapping Roll",
     slug: "food-wrapping-roll",
-    category: "FOOD WRAPPING",
+    category: ["FOOD WRAPPING"],
     images: [
       {
         id: "img_food_wrapping_roll_1",
@@ -362,7 +362,7 @@ export const products = [
     id: 11,
     name: "Panettone Baking Mould Cup",
     slug: "panettone-baking-mould-cup",
-    category: "MOULDS",
+    category: ["MOULDS"],
     images: [
       {
         id: "img_panettone_baking_mould_cup_1",
@@ -413,7 +413,7 @@ export const products = [
     id: 12,
     name: "Paper Envelop",
     slug: "paper-envelop",
-    category: "ENVELOP",
+    category: ["ENVELOP"],
     images: [
       {
         id: "img_paper_envelop_1",
@@ -458,7 +458,7 @@ export const products = [
     id: 13,
     name: "Paper Wrap",
     slug: "paper-wrap",
-    category: "SHEET",
+    category: ["SHEET"],
     images: [
       {
         id: "img_paper_wrap_1",
@@ -474,7 +474,7 @@ export const products = [
     id: 14,
     name: "Pastry Base",
     slug: "pastry-base",
-    category: "CAKE",
+    category: ["CAKE"],
     images: [
       {
         id: "img_pastry_base_1",
@@ -519,7 +519,7 @@ export const products = [
     id: 15,
     name: "Pizza Box",
     slug: "pizza-box",
-    category: "BOX",
+    category: ["BOX"],
     images: [
       {
         id: "img_pizza_box_1",
@@ -552,7 +552,7 @@ export const products = [
     id: 16,
     name: "Plum cake Mould",
     slug: "plum-cake-mould",
-    category: "MOULDS",
+    category: ["MOULDS"],
     images: [
       {
         id: "img_plum_cake_mould_1",
@@ -585,7 +585,7 @@ export const products = [
     id: 17,
     name: "Plumpy Mould",
     slug: "plumpy-mould",
-    category: "MOULDS",
+    category: ["MOULDS"],
     images: [
       {
         id: "img_plumpy_mould_1",
@@ -612,7 +612,7 @@ export const products = [
     id: 18,
     name: "Rectangular paper cups",
     slug: "rectangular-paper-cups",
-    category: "PAPER CUPS",
+    category: ["PAPER CUPS"],
     images: [
       {
         id: "img_rectangular_paper_cups_1",
@@ -651,7 +651,7 @@ export const products = [
     id: 19,
     name: "Round Plum Cake mould",
     slug: "round-plum-cake-mould",
-    category: "MOULDS",
+    category: ["MOULDS"],
     images: [
       {
         id: "img_round_plum_cake_mould_1",
@@ -696,7 +696,7 @@ export const products = [
     id: 20,
     name: "Royal Paper Cups",
     slug: "royal-paper-cups",
-    category: "PAPER CUPS",
+    category: ["PAPER CUPS"],
     images: [
       {
         id: "img_royal_paper_cups_1",
@@ -721,7 +721,7 @@ export const products = [
     id: 21,
     name: "Wrapping Sheet",
     slug: "wrapping-sheet",
-    category: "SHEET",
+    category: ["SHEET"],
     images: [
       {
         id: "img_wrapping_sheet_1",
