@@ -1,28 +1,14 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
-  cacheComponents: true,
-  partialPrefetching: true,
   reactCompiler: true,
   allowedDevOrigins: ["192.168.1.36"],
-  // Match the WordPress URLs already indexed by Google (e.g. /about/)
+  // Static HTML build in out/
+  output: "export",
+  // Each page becomes folder/index.html, so /about/ works on any static host
   trailingSlash: true,
   images: {
-    qualities: [75, 100],
-  },
-
-  async redirects() {
-    return [
-      {
-        source: "/products/:slug",
-        destination: "/product/:slug/",
-        permanent: true,
-      },
-      {
-        source: "/cake-box",
-        destination: "/product/cake-box/",
-        permanent: true,
-      },
-    ];
+    // The image optimizer needs a server; images are already WebP
+    unoptimized: true,
   },
 
   turbopack: {
