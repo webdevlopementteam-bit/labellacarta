@@ -1,8 +1,7 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
-  cacheComponents: true,
- 
-  
+  // Static HTML build in out/. Don't enable cacheComponents here:
+  // it turns on PPR, which can't run in export mode.
   output: "export",
   // Match the WordPress URLs already indexed by Google (e.g. /about/)
   trailingSlash: true,
