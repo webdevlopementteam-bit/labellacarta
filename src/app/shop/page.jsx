@@ -274,7 +274,7 @@ export default function ShopPage() {
                     className="group flex flex-col overflow-hidden rounded-2xl border border-[#0084D1]/10 bg-white shadow-[0_12px_35px_-28px_rgba(15,67,110,0.35)] transition duration-300 hover:-translate-y-1 hover:border-[#0084D1]/25 hover:shadow-[0_22px_50px_-25px_rgba(0,132,209,0.3)]"
                   >
                     <Link
-                      href={`/products/${product.slug}`}
+                      href={`/product/${product.slug}`}
                       aria-label={`View ${product.name}`}
                       className="relative block aspect-[4/3] overflow-hidden"
                     >
@@ -289,7 +289,7 @@ export default function ShopPage() {
 
                     <div className="flex flex-1 flex-col p-5">
                       <Link
-                        href={`/products/${product.slug}`}
+                        href={`/product/${product.slug}`}
                         className="group/name"
                       >
                         <h2 className="line-clamp-2 min-h-11 text-sm font-extrabold leading-5 tracking-wide text-slate-900 transition-colors group-hover/name:text-[#0084D1]">
@@ -316,7 +316,7 @@ export default function ShopPage() {
                         </span>
 
                         <Link
-                          href={`/products/${product.slug}`}
+                          href={`/product/${product.slug}`}
                           className="inline-flex items-center gap-1.5 rounded-lg px-3 py-2 text-xs font-bold text-[#0084D1] transition hover:bg-[#0084D1]/[0.07]"
                         >
                           View product

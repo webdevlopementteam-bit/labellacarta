@@ -11,8 +11,8 @@ export default function SectionBanner() {
   const [mount, setMount] = useState(false);
 
   const bannerImages = [
-    { id: 1, url: "/banner/b1.png", alt: "Banner Slide 1" },
-    { id: 2, url: "/banner/b2.png", alt: "Banner Slide 2" },
+    { id: 1, url: "/banner/b1.webp", alt: "Banner Slide 1" },
+    { id: 2, url: "/banner/b2.webp", alt: "Banner Slide 2" },
   ];
 
   useEffect(() => {

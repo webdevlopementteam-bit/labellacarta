@@ -68,7 +68,7 @@ export default function Footer() {
       {/* Decorative top edge */}
       <div className="relative h-7 w-full sm:h-8">
         <Image
-          src="/home/footer-line.png"
+          src="/home/footer-line.webp"
           alt=""
           fill
           sizes="100vw"

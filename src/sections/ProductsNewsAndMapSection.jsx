@@ -7,7 +7,7 @@ export default function ProductsNewsAndMapSection() {
   return (
     <>
       {/* 1. Full-Width Products Section with #656565 Background & Overlay */}
-      <section className="relative w-full min-h-[500px] lg:min-h-[400px] bg-[#656565] bg-[url('/home/list-bg.png')] bg-fixed bg-cover bg-center flex items-center justify-center py-10 sm:py-12 px-4 lg:px-12 overflow-hidden">
+      <section className="relative w-full min-h-[500px] lg:min-h-[400px] bg-[#656565] bg-[url('/home/list-bg.webp')] bg-fixed bg-cover bg-center flex items-center justify-center py-10 sm:py-12 px-4 lg:px-12 overflow-hidden">
         {/* Background dark overlay */}
         <div className="absolute inset-0 bg-black/50" />
 
@@ -23,7 +23,7 @@ export default function ProductsNewsAndMapSection() {
             <div className="bg-white p-3 rounded-2xl shadow-xl w-full max-w-xl">
               <div className="relative w-full h-[300px] sm:h-[350px] md:h-[450px]">
                 <Image
-                  src="/home/Our-Products-List.png"
+                  src="/home/Our-Products-List.webp"
                   alt="Product Showcase"
                   fill
                   sizes="(max-width: 768px) 100vw, 600px"
@@ -121,7 +121,7 @@ export default function ProductsNewsAndMapSection() {
               <div>
                 <div className="relative w-full h-50 sm:h-70 mb-6 overflow-hidden rounded-md bg-gray-50">
                   <Image
-                    src="/home/news1.jpeg"
+                    src="/home/news1.webp"
                     alt="We Participate in Ahaar 2024"
                     fill
                     sizes="(max-width: 768px) 100vw, 500px"
@@ -132,7 +132,7 @@ export default function ProductsNewsAndMapSection() {
                   We Participate in Ahaar 2024
                 </h4>
                 <p className="text-gray-600 text-xs sm:text-sm leading-relaxed text-center mb-6">
-                  Participating in Ahaar 2024, India's premier food and
+                  Participating in Aahar 2024, India's premier food and
                   hospitality event, can be an exciting opportunity for
                   exhibitors to connect with potential customers and foster new
                   business relationships.
@@ -155,7 +155,7 @@ export default function ProductsNewsAndMapSection() {
               <div>
                 <div className="relative w-full h-50 sm:h-70 mb-6 overflow-hidden rounded-md bg-gray-50">
                   <Image
-                    src="/home/news2.jpeg"
+                    src="/home/news2.webp"
                     alt="We Participate in Ahaar 2023"
                     fill
                     sizes="(max-width: 768px) 100vw, 500px"
@@ -166,7 +166,7 @@ export default function ProductsNewsAndMapSection() {
                   We Participate in Ahaar 2023
                 </h4>
                 <p className="text-gray-600 text-xs sm:text-sm leading-relaxed text-center mb-6">
-                  Exhibitors can greatly benefit from participating in Ahaar
+                  Exhibitors can greatly benefit from participating in Aahar
                   2023, as it offers a platform to establish connections with
                   potential clients and cultivate new business partnerships,
                   ultimately driving growth.

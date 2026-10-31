@@ -17,6 +17,32 @@ function getCategories(category) {
   return category ? [category] : [];
 }
 
+function getAllCategories() {
+  return [
+    ...new Set(products.flatMap((product) => getCategories(product.category))),
+  ];
+}
+
+export function generateStaticParams() {
+  return getAllCategories().map((category) => ({
+    slug: createCategorySlug(category),
+  }));
+}
+
+export async function generateMetadata({ params }) {
+  const { slug } = await params;
+  const category = getAllCategories().find(
+    (item) => createCategorySlug(item) === slug,
+  );
+  if (!category) return {};
+
+  // "FOOD WRAPPING" -> "Food Wrapping", as on the live site
+  const title = category
+    .toLowerCase()
+    .replace(/\b\w/g, (char) => char.toUpperCase());
+  return { title };
+}
+
 export default async function ProductCategoryPage({ params }) {
   const { slug } = await params;
   const allProducts = Array.isArray(products) ? products : [];
@@ -82,7 +108,7 @@ export default async function ProductCategoryPage({ params }) {
                 className="group flex flex-col overflow-hidden rounded-2xl border border-slate-200 bg-white shadow-sm transition duration-300 hover:-translate-y-1 hover:border-sky-200 hover:shadow-xl"
               >
                 <Link
-                  href={`/products/${product.slug}`}
+                  href={`/product/${product.slug}`}
                   aria-label={`View ${product.name}`}
                   className="relative block aspect-[4/3] overflow-hidden bg-gradient-to-br from-sky-50 to-white"
                 >
@@ -97,7 +123,7 @@ export default async function ProductCategoryPage({ params }) {
 
                 <div className="flex flex-1 flex-col p-5">
                   <Link
-                    href={`/products/${product.slug}`}
+                    href={`/product/${product.slug}`}
                     className="group/name"
                   >
                     <h2 className="line-clamp-2 min-h-11 text-base font-extrabold leading-6 tracking-wide text-slate-900 transition-colors group-hover/name:text-[#0084D1]">
@@ -126,7 +152,7 @@ export default async function ProductCategoryPage({ params }) {
                   </p>
 
                   <Link
-                    href={`/products/${product.slug}`}
+                    href={`/product/${product.slug}`}
                     className="mt-5 inline-flex items-center justify-center gap-2 rounded-xl bg-[#0084D1] px-4 py-3 text-sm font-semibold text-white transition hover:bg-sky-700 focus:outline-none focus:ring-2 focus:ring-[#0084D1] focus:ring-offset-2"
                   >
                     View product

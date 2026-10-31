@@ -61,7 +61,7 @@ function NavbarContent() {
     if (!slug) return;
     setSearchQuery("");
     setMobileMenuOpen(false);
-    router.push(`/products/${slug}`);
+    router.push(`/product/${slug}`);
   };
 
   const handleSearchSubmit = (event) => {
@@ -82,7 +82,7 @@ function NavbarContent() {
               className="relative block h-20 w-20 overflow-hidden transition-transform hover:scale-105 sm:h-24 sm:w-24"
             >
               <Image
-                src="/logo/logo.png"
+                src="/logo/logo.webp"
                 alt="Brand Logo"
                 fill
                 sizes="(max-width: 640px) 56px, 64px"
@@ -338,7 +338,7 @@ function NavbarContent() {
             <div className="mb-3 flex flex-shrink-0 items-center justify-between border-b border-sky-100 pb-4">
               <div className="relative flex h-22 w-22 items-center justify-center overflow-hidden">
                 <Image
-                  src="/logo/logo.png"
+                  src="/logo/logo.webp"
                   alt="Brand Logo"
                   fill
                   sizes="(max-width: 640px) 56px, 100px"

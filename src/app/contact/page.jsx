@@ -43,8 +43,8 @@ const contactDetails = [
   },
   {
     title: "Email",
-    lines: ["thepackhup@gmail.com"],
-    href: ["mailto:thepackhup@gmail.com"],
+    lines: ["theppackhup@gmail.com"],
+    href: ["mailto:theppackhup@gmail.com"],
     icon: "email",
   },
   {

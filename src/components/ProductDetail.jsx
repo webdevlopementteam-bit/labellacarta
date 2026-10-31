@@ -143,13 +143,14 @@ export default function ProductDetail({ product }) {
                     <table className="w-full min-w-[520px] border-collapse text-left">
                       <thead>
                         <tr className="bg-[#0084D1] text-white">
-                          {tableColumns.map((column) => (
+                          {tableColumns.map((column, columnIndex) => (
                             <th
                               key={column}
                               scope="col"
-                              className="px-5 py-4 text-sm font-semibold capitalize tracking-wide"
+                              className="px-5 py-4 text-sm font-semibold tracking-wide"
                             >
-                              {formatLabel(column)}
+                              {product.tableHeaders?.[columnIndex] ??
+                                formatLabel(column)}
                             </th>
                           ))}
                         </tr>
@@ -311,7 +312,7 @@ export default function ProductDetail({ product }) {
                       className="group relative overflow-hidden rounded-2xl border border-slate-200/80 bg-white shadow-[0_8px_30px_rgba(15,23,42,0.06)] transition-all duration-300 hover:-translate-y-1.5 hover:border-[#0084D1]/30 hover:shadow-[0_18px_45px_rgba(0,132,209,0.14)]"
                     >
                       <Link
-                        href={`/products/${item.slug}`}
+                        href={`/product/${item.slug}`}
                         aria-label={`View ${item.name}`}
                         className="relative block aspect-[4/3] overflow-hidden bg-gradient-to-br from-sky-50 to-white"
                       >
@@ -349,7 +350,7 @@ export default function ProductDetail({ product }) {
 
                         <div className="mt-5 border-t border-slate-100 pt-4">
                           <Link
-                            href={`/products/${item.slug}`}
+                            href={`/product/${item.slug}`}
                             className="inline-flex w-full items-center justify-center gap-2 rounded-xl bg-[#0084D1] px-4 py-3 text-sm font-semibold text-white shadow-sm transition hover:bg-sky-700 hover:shadow-md focus:outline-none focus:ring-2 focus:ring-[#0084D1] focus:ring-offset-2"
                           >
                             View product

@@ -2,6 +2,10 @@ import Breadcrumb from "@/components/Breadcrumb";
 import Image from "next/image";
 import React from "react";
 
+export const metadata = {
+  title: "About",
+};
+
 function Page() {
   return (
     <div className="w-full bg-slate-50 text-slate-800 font-sans">
@@ -20,7 +24,7 @@ function Page() {
             <p className="text-slate-600 leading-relaxed text-base md:text-lg">
               <strong className="text-slate-900">The Pack Hub</strong>,
               established in 2022, and{" "}
-              <strong className="text-slate-900">Labella</strong>established in
+              <strong className="text-slate-900">Labella</strong>, established in
               2023, are well-known manufacturers, exporters, and suppliers of a
               broad range of bakery items We offer our client a finest range of
               Baking Cup Paper, wrapping sheets Printed Cake Box, and Cake Base
@@ -48,7 +52,7 @@ function Page() {
           {/* Right / World Map Image */}
           <div className="relative w-full h-[300px] md:h-[400px] flex items-center justify-center bg-white rounded-2xl p-6 shadow-sm border border-slate-100">
             <Image
-              src="/about/world.png"
+              src="/about/world.webp"
               alt="Global Reach World Map"
               fill
               className="object-contain p-4"
@@ -104,7 +108,7 @@ function Page() {
       {/* 4. SUSTAINABILITY SECTION WITH FIXED BG & #454444 + GRAY EFFECT OVERLAY */}
       <section
         className="relative w-full h-[450px] md:h-[550px] flex items-center justify-center bg-fixed bg-center bg-cover overflow-hidden"
-        style={{ backgroundImage: `url('/about/bg.png')` }}
+        style={{ backgroundImage: `url('/about/bg.webp')` }}
       >
         {/* #454444 के साथ हल्का ग्रे टिनट इफ़ेक्ट */}
         <div

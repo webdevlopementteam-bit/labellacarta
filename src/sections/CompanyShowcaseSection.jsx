@@ -1,6 +1,7 @@
 "use client";
 
 import Image from "next/image";
+import Link from "next/link";
 import { motion } from "framer-motion";
 
 export default function CompanyShowcaseSection({
@@ -33,7 +34,7 @@ export default function CompanyShowcaseSection({
             >
               <div className="relative w-full h-60 sm:h-72">
                 <Image
-                  src="/home/we-support1.png"
+                  src="/home/we-support1.webp"
                   alt="Swachh Bharat Support"
                   fill
                   sizes={sizes}
@@ -51,7 +52,7 @@ export default function CompanyShowcaseSection({
             >
               <div className="relative w-full h-60 sm:h-72">
                 <Image
-                  src="/home/we-support2.jpeg"
+                  src="/home/we-support2.webp"
                   alt="Make In India Support"
                   fill
                   sizes={sizes}
@@ -86,7 +87,7 @@ export default function CompanyShowcaseSection({
             >
               <div className="relative w-full h-72 sm:h-84">
                 <Image
-                  src="/home/innovation.jpg"
+                  src="/home/innovation.webp"
                   alt="Innovation Baking Cups"
                   fill
                   sizes={sizes}
@@ -133,6 +134,13 @@ export default function CompanyShowcaseSection({
                   </span>
                 </li>
               </ul>
+
+              <Link
+                href="/shop"
+                className="inline-flex items-center rounded-full bg-sky-500 px-7 py-3 text-sm font-semibold text-white shadow-md transition-colors hover:bg-sky-600 sm:text-base"
+              >
+                Discover More
+              </Link>
             </motion.div>
           </div>
         </div>
@@ -161,7 +169,7 @@ export default function CompanyShowcaseSection({
             >
               <div className="relative w-full h-64 sm:h-84">
                 <Image
-                  src="/home/research.png"
+                  src="/home/research.webp"
                   alt="Research and Development Plant"
                   fill
                   sizes={sizes}
@@ -227,7 +235,7 @@ export default function CompanyShowcaseSection({
             >
               <div className="relative w-full h-[350px] sm:h-[420px]">
                 <Image
-                  src="/home/certificate.jpg"
+                  src="/home/certificate.webp"
                   alt="ISO 9001:2015 Certificate of Registration"
                   fill
                   sizes={sizes}

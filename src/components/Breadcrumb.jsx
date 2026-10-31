@@ -10,50 +10,50 @@ export default function Breadcrumb({ title }) {
   // 1. आपके shopItems के हिसाब से routes की mapping (b1, b2, b3, b4 को आपस में cycle किया गया है)
   const routeConfig = {
     "/shop/box": {
-      image: "/breadcrump/b1.png",
+      image: "/breadcrump/b1.webp",
       defaultTitle: "Box",
     },
     "/shop/cake": {
-      image: "/breadcrump/b2.png",
+      image: "/breadcrump/b2.webp",
       defaultTitle: "Cake",
     },
     "/shop/envelop": {
-      image: "/breadcrump/b3.png",
+      image: "/breadcrump/b3.webp",
       defaultTitle: "Envelop",
     },
     "/shop/food-wrapping": {
-      image: "/breadcrump/b4.png",
+      image: "/breadcrump/b4.webp",
       defaultTitle: "Food Wrapping",
     },
     "/shop/moulds": {
-      image: "/breadcrump/b2.png",
+      image: "/breadcrump/b2.webp",
       defaultTitle: "Moulds",
     },
     "/shop/paper-cups": {
-      image: "/breadcrump/b2.png",
+      image: "/breadcrump/b2.webp",
       defaultTitle: "Paper Cups",
     },
     "/shop/sheet": {
-      image: "/breadcrump/b3.png",
+      image: "/breadcrump/b3.webp",
       defaultTitle: "Sheet",
     },
     "/about": {
-      image: "/breadcrump/b1.png",
+      image: "/breadcrump/b1.webp",
       defaultTitle: "Moulds",
     },
     "/contact": {
-      image: "/breadcrump/b4.png",
+      image: "/breadcrump/b4.webp",
       defaultTitle: "Paper Cups",
     },
     "/shop": {
-      image: "/breadcrump/b1.png",
+      image: "/breadcrump/b1.webp",
       defaultTitle: "Sheet",
     },
   };
 
   // 2. Current route के लिए config ढूंढना (अगर मैच न हो तो fallback set करना)
   const currentConfig = routeConfig[pathname] || {
-    image: "/breadcrump/b1.png",
+    image: "/breadcrump/b1.webp",
     defaultTitle: "Shop",
   };
 

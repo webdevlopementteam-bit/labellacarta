@@ -7,7 +7,7 @@ export const products = [
     images: [
       {
         id: "img_cups_1",
-        url: "/shop/BAKING PAPER CUPS.png",
+        url: "/shop/BAKING PAPER CUPS.webp",
         alt: "Baking Paper Cups Assorted Colors",
       },
     ],
@@ -21,10 +21,11 @@ export const products = [
     images: [
       {
         id: "img_brownie_1",
-        url: "/shop/Brownie Mould.png",
+        url: "/shop/Brownie Mould.webp",
         alt: "Brownie Mould on Grass",
       },
     ], // Yahan table data bhi array of objects hota hai (jo mapping/loops ke liye standard hai)
+    tableHeaders: ["Item Code", "Length (MM)", "Width(MM)", "Height (MM)"],
     tableData: [
       {
         itemCode: "BM-5025",
@@ -48,10 +49,11 @@ export const products = [
     images: [
       {
         id: "img_burger_1",
-        url: "/shop/Burger Paper.png",
+        url: "/shop/Burger Paper.webp",
         alt: "Burger Paper Designs",
       },
     ],
+    tableHeaders: ["Item", "Width (inch)", "Length (inch)", "Packing"],
     tableData: [
       {
         item: "9x12",
@@ -93,10 +95,11 @@ export const products = [
     images: [
       {
         id: "img_butter_1",
-        url: "/shop/Butter Paper.png",
+        url: "/shop/Butter Paper.webp",
         alt: "Butter Paper Sheets",
       },
     ],
+    tableHeaders: ["Item", "Width (mm)", "Length (mm)", "Packing"],
     tableData: [
       {
         item: "60x90",
@@ -126,15 +129,16 @@ export const products = [
     images: [
       {
         id: "img_cake_base_1",
-        url: "/shop/Cake Base Board.png",
+        url: "/shop/Cake Base Board.webp",
         alt: "Cake Base Board Gold and Silver",
       },
       {
         id: "img_cake_base_2",
-        url: "/shop/Cake Base Board2.png",
+        url: "/shop/Cake Base Board2.webp",
         alt: "Stacked Cake Base Boards",
       },
     ],
+    tableHeaders: ["Cake Base Size(inch)", "MOQ"],
     tableData: [
       {
         size: 6,
@@ -166,15 +170,16 @@ export const products = [
     images: [
       {
         id: "img_cake_box_1",
-        url: "/shop/Cake Box.png",
+        url: "/shop/Cake Box.webp",
         alt: "Gold Cake Box with Transparent Window",
       },
       {
         id: "img_cake_box_2",
-        url: "/shop/Cake Box2.png",
+        url: "/shop/Cake Box2.webp",
         alt: "Various Cake Boxes and Packaging",
       },
     ],
+    tableHeaders: ["Item", "Base (inch)", "Length (inch)", "Packing"],
     tableData: [
       {
         item: "6x6x4",
@@ -222,7 +227,7 @@ export const products = [
     images: [
       {
         id: "img_cup_cake_liner_1",
-        url: "/shop/Cup Cake Liner.png",
+        url: "/shop/Cup Cake Liner.webp",
         alt: "Cup Cake Liner Polka Dot Designs",
       },
     ],
@@ -245,10 +250,11 @@ export const products = [
     images: [
       {
         id: "img_curl_cup_mould_1",
-        url: "/shop/Curl Cup Mould.png",
+        url: "/shop/Curl Cup Mould.webp",
         alt: "Curl Cup Mould Assorted Colors on Wooden Tray",
       },
     ],
+    tableHeaders: ["Item Code", "Base (MM)", "Height(MM)", "MOQ(PCS)"],
     tableData: [
       {
         itemCode: "CCM-3025",
@@ -284,10 +290,11 @@ export const products = [
     images: [
       {
         id: "img_food_wrapping_envelop_1",
-        url: "/shop/Food Wrapping Envelop.png",
+        url: "/shop/Food Wrapping Envelop.webp",
         alt: "Food Wrapping Envelop Designs",
       },
     ],
+    tableHeaders: ["Gusset(MM)", "Width (MM)", "Length (MM)", "Capacity"],
     tableData: [
       {
         gusset: 60,
@@ -329,10 +336,11 @@ export const products = [
     images: [
       {
         id: "img_food_wrapping_roll_1",
-        url: "/shop/Food Wrapping Roll.png",
+        url: "/shop/Food Wrapping Roll.webp",
         alt: "Food Wrapping Roll with Green Delicious Print",
       },
     ],
+    tableHeaders: ["Item", "Width (inch)", "Length (inch)", "Packing"],
     tableData: [
       {
         item: "11 mtr.",
@@ -366,10 +374,11 @@ export const products = [
     images: [
       {
         id: "img_panettone_baking_mould_cup_1",
-        url: "/shop/Panettone Baking Mould Cup.png",
+        url: "/shop/Panettone Baking Mould Cup.webp",
         alt: "Panettone Baking Mould Cup Assorted Designs",
       },
     ],
+    tableHeaders: ["Item Code", "Base (MM)", "Height(MM)", "Packing"],
     tableData: [
       {
         itemCode: "PBM-5045",
@@ -417,10 +426,11 @@ export const products = [
     images: [
       {
         id: "img_paper_envelop_1",
-        url: "/shop/Paper Envelop.png",
+        url: "/shop/Paper Envelop.webp",
         alt: "Paper Envelop with Newspaper Print",
       },
     ],
+    tableHeaders: ["Gusset(MM)", "Width (MM)", "Length (MM)", "Capacity"],
     tableData: [
       {
         gusset: 60,
@@ -462,7 +472,7 @@ export const products = [
     images: [
       {
         id: "img_paper_wrap_1",
-        url: "/shop/Paper Wrap.png",
+        url: "/shop/Paper Wrap.webp",
         alt: "Paper Wrap Rolls Assorted Designs",
       },
     ],
@@ -478,10 +488,11 @@ export const products = [
     images: [
       {
         id: "img_pastry_base_1",
-        url: "/shop/Pastry Base.png",
+        url: "/shop/Pastry Base.webp",
         alt: "Pastry Base Gold Boards",
       },
     ],
+    tableHeaders: ["Item", "Width (MM)", "Length (MM)", "Packing"],
     tableData: [
       {
         item: "90 mm Round",
@@ -523,10 +534,11 @@ export const products = [
     images: [
       {
         id: "img_pizza_box_1",
-        url: "/shop/Pizza Box.png",
+        url: "/shop/Pizza Box.webp",
         alt: "Pizza Box Red Design",
       },
     ],
+    tableHeaders: ["Item", "Base (inch)", "Length (inch)", "Packing"],
     tableData: [
       {
         item: "7x7x1.5",
@@ -556,10 +568,11 @@ export const products = [
     images: [
       {
         id: "img_plum_cake_mould_1",
-        url: "/shop/Plum cake Mould.png",
+        url: "/shop/Plum cake Mould.webp",
         alt: "Plum cake Mould with Baked Cake",
       },
     ],
+    tableHeaders: ["Item Code", "Length (MM)", "Width (MM)", "MOQ (PCS.)"],
     tableData: [
       {
         itemCode: "PCM-9550",
@@ -589,10 +602,11 @@ export const products = [
     images: [
       {
         id: "img_plumpy_mould_1",
-        url: "/shop/Plumpy Mould.png",
+        url: "/shop/Plumpy Mould.webp",
         alt: "Plumpy Mould Rectangular Baking Cups",
       },
     ],
+    tableHeaders: ["Item Code", "Length (MM)", "Width (MM)", "Height(MM)"],
     tableData: [
       {
         itemCode: "PBM-5025",
@@ -616,10 +630,11 @@ export const products = [
     images: [
       {
         id: "img_rectangular_paper_cups_1",
-        url: "/shop/Rectangular paper cups.png",
+        url: "/shop/Rectangular paper cups.webp",
         alt: "Rectangular paper cups White Design",
       },
     ],
+    tableHeaders: ["Item", "Bottom (MM)", "Height(MM)", "Packing"],
     tableData: [
       {
         item: "65x23x24",
@@ -655,10 +670,11 @@ export const products = [
     images: [
       {
         id: "img_round_plum_cake_mould_1",
-        url: "/shop/Round Plum Cake mould.png",
+        url: "/shop/Round Plum Cake mould.webp",
         alt: "Round Plum Cake mould Brown Design",
       },
     ],
+    tableHeaders: ["Item Code", "Base (MM)", "Height(MM)", "MOQ(PCS)"],
     tableData: [
       {
         itemCode: "RPC-10030",
@@ -700,7 +716,7 @@ export const products = [
     images: [
       {
         id: "img_royal_paper_cups_1",
-        url: "/shop/Royal Paper Cups.png",
+        url: "/shop/Royal Paper Cups.webp",
         alt: "Royal Paper Cups Display",
       },
     ],
@@ -725,10 +741,11 @@ export const products = [
     images: [
       {
         id: "img_wrapping_sheet_1",
-        url: "/shop/Wrapping Sheet.png",
+        url: "/shop/Wrapping Sheet.webp",
         alt: "Wrapping Sheet Golden Designs",
       },
     ],
+    tableHeaders: ["Wrapping Sheet (Inch)", "Paper Specification"],
     tableData: [
       {
         wrappingSheet: "12x16",

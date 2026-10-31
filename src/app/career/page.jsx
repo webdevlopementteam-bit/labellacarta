@@ -66,7 +66,7 @@ export default function CareerPage() {
       return;
     }
 
-    const accessKey = '12345';
+    const accessKey = process.env.NEXT_PUBLIC_WEB3FORMS_ACCESS_KEY;
 
     if (!accessKey) {
       setServerError(

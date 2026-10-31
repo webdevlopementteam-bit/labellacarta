@@ -1,3 +1,4 @@
+import AudienceAccordionSection from "@/sections/AudienceAccordionSection";
 import CompanyShowcaseSection from "@/sections/CompanyShowcaseSection";
 import ProductsNewsAndMapSection from "@/sections/ProductsNewsAndMapSection";
 import SectionBanner from "@/sections/SectionBanner";
@@ -9,6 +10,7 @@ function page() {
     <>
       <SectionBanner />
       <SolutionsAndFeaturedSection />
+      <AudienceAccordionSection />
       <CompanyShowcaseSection />
       <ProductsNewsAndMapSection />
     </>

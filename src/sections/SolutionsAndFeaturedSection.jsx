@@ -1,6 +1,7 @@
 "use client";
 import React, { useEffect, useState } from "react";
 import Image from "next/image";
+import Link from "next/link";
 import { Swiper, SwiperSlide } from "swiper/react";
 import { Autoplay } from "swiper/modules";
 import { motion } from "framer-motion";
@@ -12,12 +13,12 @@ export default function SolutionsAndFeaturedSection() {
   const [mount, setMount] = useState(false);
 
   const solutionsImages = [
-    { id: 1, url: "/home/s1.jpg", alt: "Solution Slide 1" },
-    { id: 2, url: "/home/s2.jpg", alt: "Solution Slide 2" },
-    { id: 3, url: "/home/s3.jpg", alt: "Solution Slide 3" },
-    { id: 4, url: "/home/s4.jpg", alt: "Solution Slide 4" },
-    { id: 5, url: "/home/s5.jpg", alt: "Solution Slide 5" },
-    { id: 6, url: "/home/s6.jpg", alt: "Solution Slide 6" },
+    { id: 1, url: "/home/s1.webp", alt: "Solution Slide 1" },
+    { id: 2, url: "/home/s2.webp", alt: "Solution Slide 2" },
+    { id: 3, url: "/home/s3.webp", alt: "Solution Slide 3" },
+    { id: 4, url: "/home/s4.webp", alt: "Solution Slide 4" },
+    { id: 5, url: "/home/s5.webp", alt: "Solution Slide 5" },
+    { id: 6, url: "/home/s6.webp", alt: "Solution Slide 6" },
   ];
 
   useEffect(() => {
@@ -135,6 +136,13 @@ export default function SolutionsAndFeaturedSection() {
                 simply tear the paper wrapper at the seam. Note that baking cups
                 are not reusable and are made of paper.
               </p>
+
+              <Link
+                href="/shop"
+                className="inline-flex items-center rounded-full bg-[#0092E4] px-7 py-3 text-sm font-semibold text-white shadow-md transition-colors hover:bg-sky-700 sm:text-base"
+              >
+                All Products &gt;
+              </Link>
             </motion.div>
 
             {/* Right Image (Wrapped in its own card/box) */}
@@ -148,7 +156,7 @@ export default function SolutionsAndFeaturedSection() {
               <div className="w-full bg-white rounded-3xl border border-gray-100/80 shadow-xl shadow-gray-100/60 p-6 md:p-8 transition-all duration-300">
                 <div className="relative w-full aspect-square flex items-center justify-center bg-[#FFFFFF] rounded-2xl p-6 overflow-hidden border border-gray-100 shadow-inner group">
                   <Image
-                    src="/home/f1.jpg"
+                    src="/home/f1.webp"
                     alt="Baking Paper Cups Featured"
                     fill
                     sizes="(max-width: 1024px) 100vw, 40vw"
