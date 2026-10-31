@@ -1,10 +1,10 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
-  reactCompiler: true,
-  allowedDevOrigins: ["192.168.1.36"],
-  // Static HTML build in out/
+  cacheComponents: true,
+ 
+  
   output: "export",
-  // Each page becomes folder/index.html, so /about/ works on any static host
+  // Match the WordPress URLs already indexed by Google (e.g. /about/)
   trailingSlash: true,
   images: {
     // The image optimizer needs a server; images are already WebP
